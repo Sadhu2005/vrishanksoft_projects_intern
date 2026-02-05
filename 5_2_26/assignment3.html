@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environmental Pollution Awareness | Image Application</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            /* Background image for entire webpage */
+            background-image: url('https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=1920');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.95);
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2c5530;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #4a7c59;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #4a7c59;
+            padding-bottom: 5px;
+        }
+
+        .description {
+            background-color: #f0f7f2;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #4a7c59;
+        }
+
+        .description h3 {
+            color: #2c5530;
+            margin-bottom: 10px;
+        }
+
+        .description p {
+            margin-bottom: 10px;
+        }
+
+        .image-map-section {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .image-map-container {
+            position: relative;
+            display: inline-block;
+            margin: 20px 0;
+        }
+
+        .image-map-container img {
+            max-width: 100%;
+            height: auto;
+            border: 3px solid #4a7c59;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .map-info {
+            background-color: #fff9e6;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #ff9800;
+        }
+
+        .map-info ul {
+            list-style-position: inside;
+            text-align: left;
+            display: inline-block;
+        }
+
+        .map-info li {
+            margin: 8px 0;
+        }
+
+        .picture-section {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .picture-container {
+            display: inline-block;
+            margin: 20px 0;
+        }
+
+        .picture-container img {
+            max-width: 100%;
+            height: auto;
+            border: 3px solid #4a7c59;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .element-bg {
+            /* Background image for specific HTML element */
+            background-image: url('https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=800');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .element-bg h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        #messageBox {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            display: none;
+            max-width: 400px;
+            text-align: center;
+            border: 3px solid #4a7c59;
+        }
+
+        #messageBox.show {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        #messageBox button {
+            background-color: #4a7c59;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: 16px;
+        }
+
+        #messageBox button:hover {
+            background-color: #2c5530;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        .overlay.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1> Environmental Pollution Awareness</h1>
+
+        <!-- Content Description -->
+        <div class="description">
+            <h3>About This Application</h3>
+            <p><strong>Real-World Problem:</strong> Environmental pollution is one of the most critical challenges facing our planet today. It affects air quality, water resources, soil health, and ultimately human health and biodiversity. This application demonstrates various HTML image concepts while raising awareness about different types of pollution.</p>
+            
+            <p><strong>Purpose of Images:</strong> The images used in this application serve multiple purposes:</p>
+            <ul>
+                <li><strong>Image Map:</strong> The main pollution image contains clickable areas (using rectangle, circle, and polygon shapes) that highlight different pollution sources and their impacts.</li>
+                <li><strong>Background Images:</strong> Used to create visual context and enhance the user experience, demonstrating how background images can be applied to entire pages or specific elements.</li>
+                <li><strong>Responsive Images:</strong> The &lt;picture&gt; element ensures optimal image display across different screen sizes and devices, improving performance and user experience.</li>
+            </ul>
+        </div>
+
+        <!-- Image Map Section -->
+        <div class="image-map-section">
+            <h2>Interactive Pollution Map</h2>
+            <p>Click on different areas of the image to learn about various pollution sources:</p>
+            
+            <div class="image-map-container">
+                <!-- Image Map with multiple shapes -->
+                <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=800" 
+                     alt="Environmental Pollution" 
+                     usemap="#pollutionMap"
+                     width="800" 
+                     height="500">
+                
+                <map name="pollutionMap">
+                    <!-- Rectangle shape - Industrial Area -->
+                    <area shape="rect" 
+                          coords="50,100,250,300" 
+                          href="#" 
+                          alt="Industrial Pollution"
+                          onclick="showMessage('Industrial Pollution', 'Factories and industrial plants release harmful chemicals and greenhouse gases into the air and water, contributing significantly to environmental degradation.', event); return false;">
+                    
+                    <!-- Circle shape - Vehicle Emissions -->
+                    <area shape="circle" 
+                          coords="600,200,80" 
+                          href="#" 
+                          alt="Vehicle Emissions"
+                          onclick="showMessage('Vehicle Emissions', 'Cars, trucks, and other vehicles emit carbon dioxide, nitrogen oxides, and particulate matter, causing air pollution and contributing to climate change.', event); return false;">
+                    
+                    <!-- Polygon shape - Water Pollution Area -->
+                    <area shape="poly" 
+                          coords="300,350,450,350,500,450,400,500,250,500,200,400" 
+                          href="#" 
+                          alt="Water Pollution"
+                          onclick="showMessage('Water Pollution', 'Contaminated water bodies affect aquatic life and human health. Sources include industrial waste, agricultural runoff, and improper waste disposal.', event); return false;">
+                    
+                    <!-- Rectangle shape - Deforestation Area -->
+                    <area shape="rect" 
+                          coords="100,400,200,500" 
+                          href="#" 
+                          alt="Deforestation"
+                          onclick="showMessage('Deforestation', 'Cutting down forests reduces carbon absorption, destroys habitats, and contributes to climate change and loss of biodiversity.', event); return false;">
+                    
+                    <!-- Circle shape - Waste Dumping -->
+                    <area shape="circle" 
+                          coords="700,400,70" 
+                          href="#" 
+                          alt="Waste Dumping"
+                          onclick="showMessage('Waste Dumping', 'Improper waste disposal contaminates soil and water, releases toxic chemicals, and harms wildlife and ecosystems.', event); return false;">
+                </map>
+            </div>
+
+            <div class="map-info">
+                <h3> Clickable Areas Guide:</h3>
+                <ul>
+                    <li><strong>Rectangle (Top-left):</strong> Industrial Pollution - Click to learn about factory emissions</li>
+                    <li><strong>Circle (Top-right):</strong> Vehicle Emissions - Click to learn about transportation pollution</li>
+                    <li><strong>Polygon (Center-bottom):</strong> Water Pollution - Click to learn about contaminated water sources</li>
+                    <li><strong>Rectangle (Bottom-left):</strong> Deforestation - Click to learn about forest destruction</li>
+                    <li><strong>Circle (Bottom-right):</strong> Waste Dumping - Click to learn about improper waste disposal</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Background Image on Specific Element -->
+        <div class="element-bg">
+            <h3> Take Action Against Pollution</h3>
+            <p>This section demonstrates a background image applied to a specific HTML element. The background image shows a clean environment, representing what we can achieve through collective action.</p>
+            <p><strong>Background Properties Used:</strong></p>
+            <ul style="text-align: left; display: inline-block;">
+                <li><strong>background-size: cover</strong> - Ensures the image covers the entire element</li>
+                <li><strong>background-repeat: no-repeat</strong> - Prevents image repetition</li>
+                <li><strong>background-position: center</strong> - Centers the image</li>
+            </ul>
+        </div>
+
+        <!-- Responsive Picture Element -->
+        <div class="picture-section">
+            <h2>Responsive Pollution Awareness Image</h2>
+            <p>This image adapts to different screen sizes using the &lt;picture&gt; element:</p>
+            
+            <div class="picture-container">
+                <picture>
+                    <!-- Different images based on screen width -->
+                    <source media="(min-width: 1200px)" 
+                            srcset="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=1200">
+                    <source media="(min-width: 768px)" 
+                            srcset="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=800">
+                    <source media="(min-width: 480px)" 
+                            srcset="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=600">
+                    <!-- Fallback image -->
+                    <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=400" 
+                         alt="Environmental Pollution - Responsive Image"
+                         width="800"
+                         height="500">
+                </picture>
+            </div>
+
+            <div class="map-info">
+                <h3> Responsive Behavior:</h3>
+                <ul>
+                    <li><strong>Large screens (≥1200px):</strong> High-resolution image (1200px width)</li>
+                    <li><strong>Tablets (768px - 1199px):</strong> Medium-resolution image (800px width)</li>
+                    <li><strong>Mobile (480px - 767px):</strong> Smaller image (600px width)</li>
+                    <li><strong>Small mobile (&lt;480px):</strong> Fallback image (400px width)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Additional Information -->
+        <div class="description">
+            <h3>Key Features Demonstrated</h3>
+            <ul style="text-align: left; display: inline-block;">
+                <li> <strong>Image Map:</strong> Multiple clickable areas using rectangle, circle, and polygon shapes</li>
+                <li> <strong>JavaScript Interaction:</strong> Clickable areas display informative messages</li>
+                <li> <strong>Background Images:</strong> Applied to entire body and specific elements with various CSS properties</li>
+                <li> <strong>Responsive Images:</strong> &lt;picture&gt; element adapts to different screen sizes</li>
+                <li> <strong>Single Page:</strong> All features contained within one HTML file</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Message Box Overlay -->
+    <div class="overlay" id="overlay"></div>
+    <div id="messageBox">
+        <h3 id="messageTitle"></h3>
+        <p id="messageText"></p>
+        <button onclick="closeMessage()">Close</button>
+    </div>
+
+    <script>
+        function showMessage(title, text, event) {
+            event.preventDefault();
+            document.getElementById('messageTitle').textContent = title;
+            document.getElementById('messageText').textContent = text;
+            document.getElementById('messageBox').classList.add('show');
+            document.getElementById('overlay').classList.add('show');
+        }
+
+        function closeMessage() {
+            document.getElementById('messageBox').classList.remove('show');
+            document.getElementById('overlay').classList.remove('show');
+        }
+
+        // Close message when clicking overlay
+        document.getElementById('overlay').addEventListener('click', closeMessage);
+
+        // Close message with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeMessage();
+            }
+        });
+    </script>
+</body>
+</html>
