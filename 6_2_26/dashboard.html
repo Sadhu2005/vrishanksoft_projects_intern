@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Event Management Dashboard</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        /* General page styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            color: #1a237e;
+            border-bottom: 3px solid #1a237e;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .intro {
+            background-color: #e8eaf6;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #1a237e;
+        }
+
+        .intro p {
+            margin: 0;
+        }
+
+        /* General table styles */
+        table {
+            width: 90%;
+            margin: 0 auto 40px;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        caption {
+            font-size: 1.2em;
+            font-weight: bold;
+            padding: 12px;
+            background-color: #1a237e;
+            color: white;
+            text-align: left;
+        }
+
+        th {
+            background-color: #e0e0e0;
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 600;
+            border: 1px solid #bdbdbd;
+        }
+
+        td {
+            padding: 8px 12px;
+            border: 1px solid #e0e0e0;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        tr:hover {
+            background-color: #f0f4ff;
+        }
+
+        /* Event Schedule table – time slots and layout */
+        .schedule-table th,
+        .schedule-table td {
+            padding: 10px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .schedule-table .time-header {
+            background-color: #3949ab;
+            color: white;
+            font-weight: 600;
+            width: 80px;
+        }
+
+        .schedule-table .day-header {
+            background-color: #5c6bc0;
+            color: white;
+            font-weight: 600;
+            min-width: 120px;
+        }
+
+        .schedule-table .span-cell {
+            background-color: #c5cae9;
+            font-weight: 500;
+        }
+
+        .schedule-table .inauguration {
+            background-color: #7986cb;
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Participant Summary table – distinct styling */
+        .summary-table {
+            border-collapse: separate;
+            border-spacing: 10px;
+            width: 90%;
+        }
+
+        .summary-table caption {
+            background-color: #2e7d32;
+        }
+
+        .summary-table th {
+            background-color: #a5d6a7;
+            border: 2px dashed #1b5e20;
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        .summary-table td {
+            border: 2px dashed #1976d2;
+            border-radius: 8px;
+            padding: 10px;
+            background-color: #e3f2fd;
+        }
+
+        .summary-table tr:hover td {
+            background-color: #bbdefb;
+        }
+
+        .section-heading {
+            font-size: 1.1em;
+            color: #1a237e;
+            margin: 35px 0 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>College Event Management Dashboard</h1>
+
+    <div class="intro">
+        <p>
+            Effective event management helps colleges organize activities, coordinate departments,
+            and track participation efficiently. This dashboard provides a clear overview of events,
+            schedules, and student participation.
+        </p>
+    </div>
+
+    <!-- Event Details Table -->
+    <h2 class="section-heading">Event Details</h2>
+    <table>
+        <caption>College Event Details</caption>
+        <tr>
+            <th>Event Name</th>
+            <th>Coordinator</th>
+            <th>Department</th>
+            <th>Date</th>
+            <th>Venue</th>
+        </tr>
+        <tr>
+            <td>Tech Fest 2026</td>
+            <td>Dr. R. Kumar</td>
+            <td>Computer Science</td>
+            <td>March 15–16, 2026</td>
+            <td>Main Auditorium</td>
+        </tr>
+        <tr>
+            <td>Cultural Night</td>
+            <td>Prof. S. Nair</td>
+            <td>Humanities</td>
+            <td>March 18, 2026</td>
+            <td>Open Amphitheatre</td>
+        </tr>
+        <tr>
+            <td>Sports Meet</td>
+            <td>Mr. A. Sharma</td>
+            <td>Physical Education</td>
+            <td>March 22–24, 2026</td>
+            <td>College Ground</td>
+        </tr>
+        <tr>
+            <td>Hackathon</td>
+            <td>Dr. P. Mehta</td>
+            <td>Information Technology</td>
+            <td>March 20, 2026</td>
+            <td>CS Labs & Seminar Hall</td>
+        </tr>
+    </table>
+
+    <!-- Event Schedule Table -->
+    <h2 class="section-heading">Event Schedule</h2>
+    <table class="schedule-table">
+        <caption>Tech Fest 2026 – Day-wise Schedule</caption>
+        <tr>
+            <th class="time-header">Time</th>
+            <th class="day-header">Day 1</th>
+            <th class="day-header">Day 2</th>
+            <th class="day-header">Day 3</th>
+        </tr>
+        <tr>
+            <th class="time-header">9:00 – 10:00</th>
+            <td colspan="3" class="inauguration">Inauguration (All Days)</td>
+        </tr>
+        <tr>
+            <th class="time-header">10:00 – 11:00</th>
+            <td class="span-cell">Coding Workshop</td>
+            <td>Paper Presentation</td>
+            <td>Project Expo</td>
+        </tr>
+        <tr>
+            <th class="time-header">11:00 – 12:00</th>
+            <td class="span-cell" rowspan="2">Coding Workshop (cont.)</td>
+            <td>Paper Presentation (cont.)</td>
+            <td>Project Expo (cont.)</td>
+        </tr>
+        <tr>
+            <th class="time-header">12:00 – 1:00</th>
+            <td>Quiz Prelims</td>
+            <td>Closing Ceremony</td>
+        </tr>
+        <tr>
+            <th class="time-header">1:00 – 2:00</th>
+            <td colspan="3" style="background-color: #fff3e0; text-align: center;">Lunch Break</td>
+        </tr>
+        <tr>
+            <th class="time-header">2:00 – 4:00</th>
+            <td rowspan="2">Hackathon Begins</td>
+            <td rowspan="2">Hackathon (cont.)</td>
+            <td>—</td>
+        </tr>
+        <tr>
+            <th class="time-header">4:00 – 5:00</th>
+            <td>—</td>
+        </tr>
+    </table>
+
+    <!-- Participant Summary Table -->
+    <h2 class="section-heading">Participant Summary</h2>
+    <table class="summary-table">
+        <caption>Participant Summary by Event</caption>
+        <tr>
+            <th>Event</th>
+            <th>Registered</th>
+            <th>Present</th>
+            <th>Winners</th>
+        </tr>
+        <tr>
+            <td>Tech Fest 2026</td>
+            <td>320</td>
+            <td>298</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td>Cultural Night</td>
+            <td>180</td>
+            <td>175</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>Sports Meet</td>
+            <td>250</td>
+            <td>242</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>Hackathon</td>
+            <td>45</td>
+            <td>42</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <th>Total</th>
+            <td>795</td>
+            <td>757</td>
+            <td>47</td>
+        </tr>
+    </table>
+</body>
+</html>
