@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Online College Admission Registration Form</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f4f7fb;
+      color: #273238;
+      margin: 0;
+      padding: 20px;
+    }
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 24px;
+      border-radius: 10px;
+      box-shadow: 0 8px 25px rgba(39,50,56,0.1);
+    }
+    h1 {
+      margin-top: 0;
+    }
+    .intro {
+      margin-bottom: 1.5rem;
+    }
+    form {
+      display: grid;
+      gap: 20px;
+    }
+    .section {
+      border: 1px solid #d3dae1;
+      border-radius: 8px;
+      padding: 16px;
+      background: #fafbff;
+    }
+    .section legend {
+      font-weight: 700;
+      padding: 0 6px;
+    }
+    label {
+      display: block;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+    .field-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    input[type="number"],
+    input[type="color"],
+    input[type="file"],
+    input[type="search"],
+    input[type="url"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 4px;
+      border: 1px solid #c6cbd5;
+      font-size: 14px;
+    }
+    textarea {
+      resize: vertical;
+    }
+    .inline-inputs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .inline-inputs label {
+      font-weight: normal;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    button,
+    input[type="submit"],
+    input[type="reset"],
+    input[type="button"] {
+      cursor: pointer;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 5px;
+      font-weight: 600;
+      background: #1e88e5;
+      color: #fff;
+      transition: background 0.2s ease;
+    }
+    button:hover,
+    input[type="submit"]:hover,
+    input[type="reset"]:hover,
+    input[type="button"]:hover {
+      background: #1565c0;
+    }
+    .secondary {
+      background: #657b83;
+    }
+    .output-display {
+      font-weight: 700;
+      padding: 10px;
+      border-radius: 5px;
+      background: #e3f2fd;
+      text-align: center;
+    }
+    .note {
+      font-size: 14px;
+      color: #37474f;
+    }
+    .novalidate-demo {
+      margin-top: 8px;
+      background: #fff8e1;
+      border: 1px dashed #ffb300;
+      padding: 12px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Online Admission Registration Form</h1>
+    <p class="intro">
+      Complete the form below to register for the upcoming college program intake. All fields shown are examples of the HTML form controls used in modern admissions workflows.
+    </p>
+
+    <form id="admissionForm" action="/submit_admission.php" method="POST" target="_blank" autocomplete="on">
+      <div class="section">
+        <fieldset>
+          <legend>Student Personal Details</legend>
+          <div class="field-group">
+            <div>
+              <label for="fullName">Full Name</label>
+              <input type="text" id="fullName" name="fullName" required placeholder="Enter your full name">
+            </div>
+            <div>
+              <label for="password">Create Password</label>
+              <input type="password" id="password" name="password" required minlength="8" placeholder="At least 8 characters">
+            </div>
+            <div>
+              <label for="email">Email ID</label>
+              <input type="email" id="email" name="email" required placeholder="you@email.com">
+            </div>
+            <div>
+              <label for="mobile">Mobile Number</label>
+              <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" placeholder="1234567890">
+            </div>
+            <div>
+              <label for="dob">Date of Birth</label>
+              <input type="date" id="dob" name="dob" required>
+            </div>
+            <div>
+              <label for="percentage">12th Percentage</label>
+              <input type="number" id="percentage" name="percentage" min="0" max="100" step="0.01" placeholder="85.50">
+            </div>
+            <div>
+              <label for="color">Favorite Color</label>
+              <input type="color" id="color" name="favoriteColor" value="#1e88e5">
+            </div>
+            <div>
+              <label for="documents">Upload Documents</label>
+              <input type="file" id="documents" name="documents">
+            </div>
+          </div>
+          <input type="hidden" name="application_id" value="APP20260211">
+        </fieldset>
+      </div>
+
+      <div class="section">
+        <fieldset>
+          <legend>Course Selection & Personal Interests</legend>
+          <div class="field-group">
+            <div>
+              <label>Select Gender</label>
+              <div class="inline-inputs">
+                <label><input type="radio" name="gender" value="female" required> Female</label>
+                <label><input type="radio" name="gender" value="male"> Male</label>
+                <label><input type="radio" name="gender" value="other"> Other</label>
+              </div>
+            </div>
+            <div>
+              <label>Select Hobbies</label>
+              <div class="inline-inputs">
+                <label><input type="checkbox" name="hobbies" value="reading"> Reading</label>
+                <label><input type="checkbox" name="hobbies" value="sports"> Sports</label>
+                <label><input type="checkbox" name="hobbies" value="music"> Music</label>
+              </div>
+            </div>
+            <div>
+              <label for="course">Select Course</label>
+              <select id="course" name="course">
+                <optgroup label="Engineering">
+                  <option value="computer">B.Tech Computer Science</option>
+                  <option value="electrical">B.Tech Electrical</option>
+                </optgroup>
+                <optgroup label="Business">
+                  <option value="mba">MBA (Marketing)</option>
+                  <option value="finance">MBA (Finance)</option>
+                </optgroup>
+              </select>
+            </div>
+            <div>
+              <label for="city">Preferred Campus City</label>
+              <input list="cities" id="city" name="city" placeholder="Pick a city">
+              <datalist id="cities">
+                <option value="Mumbai">
+                <option value="Delhi">
+                <option value="Bangalore">
+                <option value="Chennai">
+                <option value="Pune">
+              </datalist>
+            </div>
+            <div>
+              <label for="searchCourse">Search Course</label>
+              <input type="search" id="searchCourse" name="searchCourse" placeholder="Search keywords">
+            </div>
+            <div>
+              <label for="linkedin">LinkedIn Profile</label>
+              <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourname">
+            </div>
+            <div>
+              <label for="communication">Rate Communication Skill (1–10)</label>
+              <input type="range" id="communication" name="communication" min="1" max="10" value="7">
+            </div>
+            <div>
+              <label for="address">Address</label>
+              <textarea id="address" name="address" rows="3" placeholder="Full address for correspondence"></textarea>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="section">
+        <fieldset>
+          <legend>Entrance & Timelines</legend>
+          <div class="field-group">
+            <div>
+              <label for="entranceTest">Entrance Test Marks</label>
+              <input type="number" id="entranceTest" name="entranceTest" min="0" max="150" value="120">
+            </div>
+            <div>
+              <label for="interviewMarks">Interview Marks</label>
+              <input type="number" id="interviewMarks" name="interviewMarks" min="0" max="50" value="35">
+            </div>
+            <div>
+              <label for="totalMarks">Entrance Marks Total</label>
+              <output id="totalMarks" name="entranceTotal" class="output-display">155</output>
+            </div>
+            <div>
+              <label for="visitTime">Preferred Counseling Time</label>
+              <input type="time" id="visitTime" name="visitTime" value="10:30">
+            </div>
+            <div>
+              <label for="orientationWeek">Orientation Week</label>
+              <input type="week" id="orientationWeek" name="orientationWeek">
+            </div>
+            <div>
+              <label for="semesterStart">Semester Start Month</label>
+              <input type="month" id="semesterStart" name="semesterStart">
+            </div>
+            <div>
+              <label for="applicationDatetime">Application Timestamp</label>
+              <input type="datetime-local" id="applicationDatetime" name="applicationDatetime">
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="section buttons">
+        <button type="submit">Submit Application</button>
+        <input type="reset" value="Reset All">
+        <input type="button" value="Save Draft Locally">
+        <input type="image" src="https://via.placeholder.com/120x40?text=Submit" alt="Submit with image" width="120" height="40">
+      </div>
+
+      <div class="section">
+        <p class="note">
+          <strong>Method note:</strong> Unlike GET, POST hides data from the URL and supports larger payloads, making it preferred for sending application documents and personal data securely.
+        </p>
+      </div>
+    </form>
+
+    <div class="section novalidate-demo">
+      <p><strong>Secondary example (novalidate):</strong></p>
+      <form action="/example_novalidate.php" method="GET" novalidate>
+        <label for="nickname">Nickname (optional)</label>
+        <input type="text" id="nickname" name="nickname" placeholder="Enter a nickname">
+        <button type="submit">Send without validation</button>
+      </form>
+    </div>
+  </main>
+</body>
+</html>
