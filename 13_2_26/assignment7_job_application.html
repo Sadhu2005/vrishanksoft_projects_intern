@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>One-Page Smart Job Application Portal</title>
+  <style>
+    :root {
+      --bg: #f4f6fb;
+      --card: #ffffff;
+      --border: #dfe4ee;
+      --accent: #1f6ef0;
+      --accent-strong: #134ba1;
+      --text: #152033;
+      --muted: #5c6773;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", "Inter", system-ui, sans-serif;
+      padding: 20px;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: var(--card);
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.15);
+      padding: 36px 40px 48px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.4rem;
+      letter-spacing: 0.6px;
+    }
+
+    p.lead {
+      margin: 12px 0 24px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .section {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      background: #fff;
+    }
+
+    fieldset {
+      border: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    legend {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      background: #fff;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .hint {
+      font-size: 0.83rem;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .inline-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 18px;
+    }
+
+    .inline-group label {
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .inline-group input {
+      margin: 0;
+      width: auto;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    input[type="submit"],
+    input[type="reset"],
+    input[type="button"],
+    button {
+      border: none;
+      border-radius: 10px;
+      padding: 12px 22px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      color: #fff;
+      background: var(--accent);
+      transition: background 0.2s ease;
+    }
+
+    input[type="reset"] {
+      background: #6c7783;
+    }
+
+    button,
+    input[type="button"] {
+      background: #0b5ed7;
+    }
+
+    input[type="image"] {
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    input[type="submit"]:hover,
+    input[type="reset"]:hover,
+    button:hover,
+    input[type="button"]:hover {
+      background: var(--accent-strong);
+    }
+
+    .note {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    @media (max-width: 600px) {
+      main {
+        padding: 24px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Smart Job Application Portal</h1>
+    <p class="lead">
+      Submit your complete application in one place—personal data, role choice, professional details, documents, and payment readiness—without leaving the page.
+    </p>
+
+    <form id="smartJobPortal" action="/submit_job_application" method="POST" autocomplete="on">
+      <input type="hidden" name="internalReferenceCode" value="HR-REF-20260213">
+      <section class="section">
+        <fieldset>
+          <legend>Section 1: Candidate Basic Information</legend>
+          <div class="grid-2">
+            <div>
+              <label for="fullName">Full Name</label>
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                placeholder="e.g., Anjali Mehta"
+                maxlength="60"
+                required
+                autofocus
+                autocomplete="name"
+              />
+            </div>
+            <div>
+              <label for="emailAddress">Email Address</label>
+              <input
+                type="email"
+                id="emailAddress"
+                name="emailAddress"
+                placeholder="name@example.com"
+                required
+                autocomplete="off"
+              />
+            </div>
+            <div>
+              <label for="phoneNumber">Phone Number</label>
+              <input
+                type="tel"
+                id="phoneNumber"
+                name="phoneNumber"
+                pattern="[0-9]{10}"
+                title="Enter exactly 10 digits, e.g., 9876543210"
+                placeholder="9876543210"
+                required
+                autocomplete="tel"
+              />
+              <p class="hint">Digits only, no spaces or symbols.</p>
+            </div>
+            <div>
+              <label for="portfolio">Portfolio Website</label>
+              <input
+                type="url"
+                id="portfolio"
+                name="portfolio"
+                placeholder="https://"
+                autocomplete="url"
+              />
+            </div>
+            <div>
+              <label for="dateOfBirth">Date of Birth</label>
+              <input
+                type="date"
+                id="dateOfBirth"
+                name="dateOfBirth"
+                min="1984-01-01"
+                max="2004-12-31"
+                required
+              />
+            </div>
+            <div>
+              <label for="availableWeek">Available Interview Week</label>
+              <input
+                type="week"
+                id="availableWeek"
+                name="availableWeek"
+                required
+              />
+            </div>
+            <div>
+              <label for="interviewDateTime">Preferred Interview Date &amp; Time</label>
+              <input
+                type="datetime-local"
+                id="interviewDateTime"
+                name="interviewDateTime"
+                required
+              />
+            </div>
+            <div>
+              <label for="contactTime">Preferred Contact Time</label>
+              <input
+                type="time"
+                id="contactTime"
+                name="contactTime"
+                required
+              />
+            </div>
+          </div>
+        </fieldset>
+      </section>
+
+      <section class="section">
+        <fieldset>
+          <legend>Section 2: Job Selection</legend>
+          <div>
+            <label>Choose Your Desired Role (required)</label>
+            <div class="inline-group">
+              <label>
+                <input type="radio" name="jobRole" value="software_developer" required />
+                Software Developer
+              </label>
+              <label>
+                <input type="radio" name="jobRole" value="uiux_designer" />
+                UI/UX Designer
+              </label>
+              <label>
+                <input type="radio" name="jobRole" value="data_analyst" />
+                Data Analyst
+              </label>
+              <label>
+                <input type="radio" name="jobRole" value="cyber_security_engineer" />
+                Cyber Security Engineer
+              </label>
+            </div>
+          </div>
+          <div style="margin-top: 16px;">
+            <label>Technical Skills (select all that apply)</label>
+            <div class="inline-group">
+              <label><input type="checkbox" name="skills" value="html" /> HTML</label>
+              <label><input type="checkbox" name="skills" value="css" /> CSS</label>
+              <label><input type="checkbox" name="skills" value="javascript" /> JavaScript</label>
+              <label><input type="checkbox" name="skills" value="python" /> Python</label>
+              <label><input type="checkbox" name="skills" value="sql" /> SQL</label>
+              <label><input type="checkbox" name="skills" value="cloud" /> Cloud Computing</label>
+            </div>
+          </div>
+        </fieldset>
+      </section>
+
+      <section class="section">
+        <fieldset>
+          <legend>Section 3: Professional Details</legend>
+          <div class="grid-2">
+            <div>
+              <label for="experienceYears">Years of Experience</label>
+              <input
+                type="number"
+                id="experienceYears"
+                name="experienceYears"
+                min="0"
+                max="20"
+                step="1"
+                value="3"
+              />
+            </div>
+            <div>
+              <label for="expectedSalary">Expected Salary (USD)</label>
+              <input
+                type="number"
+                id="expectedSalary"
+                name="expectedSalary"
+                min="20000"
+                max="200000"
+                step="5000"
+                value="65000"
+              />
+            </div>
+            <div>
+              <label for="proficiency">Skill Proficiency Level</label>
+              <input
+                type="range"
+                id="proficiency"
+                name="proficiency"
+                min="0"
+                max="10"
+                step="1"
+                value="6"
+              />
+            </div>
+          </div>
+          <div class="grid-2" style="margin-top: 14px;">
+            <div>
+              <label for="preferredLocation">Preferred Work Location</label>
+              <input
+                type="text"
+                id="preferredLocation"
+                name="preferredLocation"
+                list="locationOptions"
+                placeholder="Choose a city"
+              />
+              <datalist id="locationOptions">
+                <option value="Bangalore"></option>
+                <option value="Hyderabad"></option>
+                <option value="Chennai"></option>
+                <option value="Pune"></option>
+              </datalist>
+            </div>
+            <div>
+              <label for="themeColor">Favorite Theme Color</label>
+              <input type="color" id="themeColor" name="themeColor" value="#1f6ef0" />
+            </div>
+            <div>
+              <label for="jobCode">Search Job Code</label>
+              <input
+                type="search"
+                id="jobCode"
+                name="jobCode"
+                placeholder="e.g., SD-2026"
+                size="26"
+                pattern="[A-Za-z0-9\-]+"
+                title="Letters, numbers, and hyphen only"
+              />
+            </div>
+          </div>
+        </fieldset>
+      </section>
+
+      <section class="section">
+        <fieldset>
+          <legend>Section 4: Document Upload</legend>
+          <div class="grid-2">
+            <div>
+              <label for="resumeUpload">Upload Resume (required)</label>
+              <input
+                type="file"
+                id="resumeUpload"
+                name="resumeUpload"
+                accept=".pdf,.doc,.docx"
+                required
+              />
+            </div>
+            <div>
+              <label for="certificatesUpload">Upload Certificates</label>
+              <input
+                type="file"
+                id="certificatesUpload"
+                name="certificatesUpload"
+                multiple
+                accept=".pdf,.jpg,.png"
+              />
+            </div>
+          </div>
+        </fieldset>
+      </section>
+
+      <section class="section">
+        <fieldset>
+          <legend>Section 5: System Controlled Fields</legend>
+          <div class="grid-2">
+            <div>
+              <label for="applicationId">Application ID</label>
+              <input
+                type="text"
+                id="applicationId"
+                name="applicationId"
+                value="APP-20260213-01"
+                readonly
+              />
+            </div>
+            <div>
+              <label for="reviewStatus">HR Review Status</label>
+              <input
+                type="text"
+                id="reviewStatus"
+                name="reviewStatus"
+                value="Pending"
+                disabled
+              />
+            </div>
+          </div>
+          <input type="hidden" name="internalRefCode" value="INT-REF-20260213" />
+        </fieldset>
+      </section>
+
+      <section class="section">
+        <fieldset>
+          <legend>Section 6: Feedback</legend>
+          <div class="grid-2">
+            <div>
+              <label for="hireReason">Why should we hire you?</label>
+              <textarea
+                id="hireReason"
+                name="hireReason"
+                placeholder="Summarize your value proposition in a few sentences."
+              ></textarea>
+            </div>
+            <div>
+              <label for="countryCode">Country Code</label>
+              <input
+                type="text"
+                id="countryCode"
+                name="countryCode"
+                pattern="[A-Za-z]{3}"
+                maxlength="3"
+                placeholder="USA"
+                title="Enter exactly three letters"
+              />
+              <p class="hint">ISO-like code, letters only.</p>
+            </div>
+          </div>
+        </fieldset>
+      </section>
+
+      <section class="section">
+        <fieldset>
+          <legend>Section 7: Payment &amp; Submission</legend>
+          <div class="grid-2">
+            <div>
+              <label for="interviewSlots">Number of Interview Slots</label>
+              <input
+                type="number"
+                id="interviewSlots"
+                name="interviewSlots"
+                min="1"
+                max="5"
+                value="2"
+                required
+              />
+            </div>
+          </div>
+          <div class="buttons">
+            <input
+              type="image"
+              src="https://via.placeholder.com/160x60?text=Apply+Now"
+              alt="Apply Now"
+              width="160"
+              height="60"
+            />
+            <input type="submit" value="Submit Application" />
+            <input type="reset" value="Reset Form" />
+            <button
+              type="button"
+              onclick="alert('Application draft saved locally. You may continue later.');"
+            >
+              Draft Note
+            </button>
+          </div>
+        </fieldset>
+      </section>
+
+      <p class="note">
+        Autocomplete is enabled at the form level, the POST action secures submissions, and file uploads allow resumes plus supporting certifications in a single workflow.
+      </p>
+    </form>
+  </main>
+</body>
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Online Technical Event Registration & Feedback System</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --panel: #ffffff;
+      --accent: #1e88e5;
+      --accent-strong: #1565c0;
+      --border: #d8dde6;
+      --text: #1f2933;
+      --muted: #6b7880;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 24px 16px;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: var(--panel);
+      border-radius: 12px;
+      box-shadow: 0 16px 32px rgba(31, 41, 51, 0.12);
+      padding: 32px 40px;
+    }
+
+    header {
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+      letter-spacing: 0.4px;
+    }
+
+    p.intro {
+      color: var(--muted);
+      margin: 12px 0 0;
+      line-height: 1.5;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .section {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fdfdff;
+      padding: 22px;
+    }
+
+    fieldset {
+      border: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    legend {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+    }
+
+    .grid-two {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      background: #fff;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .inline-inputs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 16px;
+    }
+
+    .inline-inputs label {
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+      gap: 6px;
+    }
+
+    .hint {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    input[type="submit"],
+    input[type="reset"],
+    input[type="button"],
+    button {
+      border: none;
+      border-radius: 8px;
+      padding: 11px 20px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      color: #fff;
+      background: var(--accent);
+      transition: background 0.2s ease;
+    }
+
+    input[type="reset"] {
+      background: #657b83;
+    }
+
+    button:hover,
+    input[type="submit"]:hover,
+    input[type="reset"]:hover,
+    input[type="button"]:hover {
+      background: var(--accent-strong);
+    }
+
+    .secondary {
+      background: #657b83;
+    }
+
+    .note {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 16px 8px;
+      }
+
+      main {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>One-Page Online Technical Event Registration & Feedback System</h1>
+      <p class="intro">
+        Register for the college technical fest, provide preferences, upload documents, share your availability, and leave feedback—all from a single page. Every control aligns with today’s input type requirements.
+      </p>
+    </header>
+
+    <form id="eventRegistration" action="/submit_event_registration" method="POST" target="_blank" autocomplete="on">
+      <input type="hidden" name="registrationId" value="TECHFEST-20260212">
+
+      <section class="section">
+        <fieldset>
+          <legend>Section 1: Participant Basic Details</legend>
+          <div class="grid-two">
+            <div>
+              <label for="participantName">Full Name</label>
+              <input type="text" id="participantName" name="participantName" placeholder="e.g., Aditi Sharma" required>
+            </div>
+            <div>
+              <label for="primaryEmail">Email Address</label>
+              <input type="email" id="primaryEmail" name="primaryEmail" placeholder="name@college.edu" required>
+            </div>
+            <div>
+              <label for="phoneNumber">Phone Number</label>
+              <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]{10}" placeholder="10 digits" required>
+              <p class="hint">Pattern enforces 10 digits (no separators).</p>
+            </div>
+            <div>
+              <label for="dob">Date of Birth</label>
+              <input type="date" id="dob" name="dob" min="1996-01-01" max="2008-12-31" required>
+            </div>
+            <div>
+              <label for="contactTime">Preferred Contact Time</label>
+              <input type="time" id="contactTime" name="contactTime" required>
+            </div>
+            <div>
+              <label for="studentIdCard">Upload Student ID Card</label>
+              <input type="file" id="studentIdCard" name="studentIdCard" accept="image/*,application/pdf" required>
+            </div>
+          </div>
+        </fieldset>
+      </section>
+
+      <section class="section">
+        <fieldset>
+          <legend>Section 2: Event Selection</legend>
+          <div>
+            <label>Select Event Category</label>
+            <div class="inline-inputs">
+              <label><input type="radio" name="eventCategory" value="web" required> Web Development</label>
+              <label><input type="radio" name="eventCategory" value="ai"> AI &amp; ML</label>
+              <label><input type="radio" name="eventCategory" value="cyber"> Cyber Security</label>
+              <label><input type="radio" name="eventCategory" value="cloud"> Cloud Computing</label>
+            </div>
+          </div>
+          <div style="margin-top: 16px;">
+            <label>Select Workshops Interested In</label>
+            <div class="inline-inputs">
+              <label><input type="checkbox" name="workshops" value="htmlcss"> HTML &amp; CSS</label>
+              <label><input type="checkbox" name="workshops" value="javascript"> JavaScript</label>
+              <label><input type="checkbox" name="workshops" value="python"> Python Programming</label>
+              <label><input type="checkbox" name="workshops" value="datascience"> Data Science</label>
+              <label><input type="checkbox" name="workshops" value="ethical"> Ethical Hacking</label>
+            </div>
+          </div>
+        </fieldset>
+      </section>
+
+      <section class="section">
+        <fieldset>
+          <legend>Section 3: Schedule &amp; Availability</legend>
+          <div class="grid-two">
+            <div>
+              <label for="preferredMonth">Select Preferred Month</label>
+              <input type="month" id="preferredMonth" name="preferredMonth" required>
+            </div>
+            <div>
+              <label for="preferredDateTime">Select Preferred Date &amp; Time</label>
+              <input type="datetime-local" id="preferredDateTime" name="preferredDateTime" required>
+            </div>
+            <div>
+              <label for="weekAvailability">Select Week Availability</label>
+              <input type="week" id="weekAvailability" name="weekAvailability" required>
+            </div>
+          </div>
+        </fieldset>
+      </section>
+
+      <section class="section">
+        <fieldset>
+          <legend>Section 4: Experience &amp; Preferences</legend>
+          <div class="grid-two">
+            <div>
+              <label for="experienceYears">Years of Experience</label>
+              <input type="number" id="experienceYears" name="experienceYears" min="0" max="25" value="2" required>
+            </div>
+            <div>
+              <label for="skillConfidence">Skill Confidence Level (0–10)</label>
+              <input type="range" id="skillConfidence" name="skillConfidence" min="0" max="10" value="6">
+            </div>
+            <div>
+              <label for="themeColor">Favorite Theme Color</label>
+              <input type="color" id="themeColor" name="themeColor" value="#1e88e5">
+            </div>
+            <div>
+              <label for="topicSearch">Search Event Topics</label>
+              <input type="search" id="topicSearch" name="topicSearch" placeholder="e.g., blockchain">
+            </div>
+          </div>
+        </fieldset>
+      </section>
+
+      <section class="section">
+        <fieldset>
+          <legend>Section 5: Additional Information</legend>
+          <div class="grid-two">
+            <div>
+              <label for="feedback">Short Feedback / Message</label>
+              <textarea id="feedback" name="feedback" placeholder="Tell us what you hope to experience" required></textarea>
+            </div>
+            <div>
+              <label for="resumeUpload">Upload Resume</label>
+              <input type="file" id="resumeUpload" name="resumeUpload" accept=".pdf,.doc,.docx" required>
+            </div>
+            <div>
+              <label for="portfolioLink">Provide Portfolio Link (optional)</label>
+              <input type="url" id="portfolioLink" name="portfolioLink" placeholder="https://">
+            </div>
+          </div>
+        </fieldset>
+      </section>
+
+      <section class="section">
+        <fieldset>
+          <legend>Section 6: Payment Section</legend>
+          <div class="grid-two">
+            <div>
+              <label for="ticketCount">Quantity of Tickets (1–5)</label>
+              <input type="number" id="ticketCount" name="ticketCount" min="1" max="5" value="1" required>
+            </div>
+          </div>
+          <div class="buttons" style="margin-top: 18px;">
+            <input type="image" src="https://via.placeholder.com/140x50?text=Pay+Now" alt="Pay Now" width="140" height="50">
+            <input type="submit" value="Normal Submit">
+            <input type="reset" value="Reset Form">
+            <button type="button" onclick="alert('Thank you! We will follow up with payment confirmation.');">Check Payment Status</button>
+          </div>
+        </fieldset>
+      </section>
+
+      <p class="note">
+        All submissions use POST to protect personal data, autocomplete stays on for convenience, and the form opens in a new tab so participants can keep working on other pages.
+      </p>
+    </form>
+  </main>
+</body>
+</html>

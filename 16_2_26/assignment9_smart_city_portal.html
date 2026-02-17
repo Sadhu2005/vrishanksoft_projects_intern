@@ -1,0 +1,323 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart City Tourism Information Portal | Lumiere Metro</title>
+  <base target="_blank">
+  <meta name="description" content="One page Smart City tourism portal with attractions, maps, video, canvas art, and visitor resources for Lumiere Metro.">
+  <meta name="keywords" content="smart city, tourism, Lumiere Metro, travel portal, attractions">
+  <meta name="author" content="Intern Team">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      color: #0f172a;
+      background: #f4f7fb;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background: #f4f7fb;
+    }
+    header {
+      background: #0f172a;
+      color: #eef2ff;
+      padding: 1rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .logo-area img {
+      width: 70px;
+      height: 70px;
+      border-radius: 15px;
+      background: #1e3a8a;
+    }
+    nav.primary-nav {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    nav.primary-nav a {
+      color: #cbd5f5;
+      text-decoration: none;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+    nav.primary-nav a:hover {
+      background: #eef2ff;
+      color: #0f172a;
+    }
+    .content-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+      gap: 2rem;
+      padding: 2rem;
+    }
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    section {
+      background: #ffffff;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 15px 40px rgba(15,23,42,0.08);
+    }
+    section h2 {
+      margin-top: 0;
+      color: #0f172a;
+    }
+    section#about article {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    section#about ul {
+      padding-left: 1.25rem;
+      margin: 0;
+    }
+    section#attractions {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    section#attractions article {
+      background: #eef2ff;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+    section#attractions img {
+      width: 100%;
+      height: 140px;
+      border-radius: 0.75rem;
+      object-fit: cover;
+    }
+    section iframe {
+      width: 100%;
+      border: none;
+      border-radius: 0.75rem;
+    }
+    .map-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .map-links a {
+      background: #e0f2fe;
+      color: #0c4a6e;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    aside {
+      background: #ffffff;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 15px 40px rgba(15,23,42,0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-self: start;
+    }
+    aside h2 {
+      margin: 0;
+      color: #0f172a;
+    }
+    .aside-section ul {
+      margin: 0;
+      padding-left: 1.25rem;
+      line-height: 1.6;
+    }
+    footer {
+      background: #0f172a;
+      color: #e0e7ff;
+      padding: 1.75rem 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    footer a {
+      color: #a5b4fc;
+      text-decoration: none;
+    }
+    .canvas-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    canvas#welcomeCanvas {
+      border: 3px solid #0f172a;
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+    }
+    @media (max-width: 900px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+      footer {
+        flex-direction: column;
+      }
+    }
+  </style>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const canvas = document.getElementById('welcomeCanvas');
+      if (!canvas || !canvas.getContext) {
+        return;
+      }
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#0f172a';
+      ctx.fillRect(20, 20, canvas.width - 40, 140);
+      const gradient = ctx.createLinearGradient(20, 20, canvas.width - 40, 20);
+      gradient.addColorStop(0, '#7dd3fc');
+      gradient.addColorStop(1, '#2563eb');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(40, 40, canvas.width - 80, 100);
+      ctx.font = 'bold 34px "Segoe UI", system-ui, sans-serif';
+      ctx.fillStyle = '#fff';
+      ctx.textAlign = 'center';
+      ctx.fillText('Welcome to Smart City', canvas.width / 2, 110);
+      ctx.font = '16px "Segoe UI", system-ui, sans-serif';
+      ctx.fillText('Experience innovation, art, and nature together', canvas.width / 2, 138);
+    });
+  </script>
+</head>
+<body>
+  <header id="home">
+    <div class="logo-area">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Crect width='80' height='80' fill='%230f172a'/%3E%3Ctext x='40' y='50' font-size='36' fill='%23f8fafc' text-anchor='middle' font-family='Arial'%3ELS%3C/text%3E%3C/svg%3E" alt="Smart City logo">
+      <div>
+        <h1>Lumiere Metro</h1>
+        <p>Connected heritage, innovative experiences.</p>
+      </div>
+    </div>
+    <nav class="primary-nav">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#attractions">Attractions</a>
+      <a href="#map-section">Map</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <div class="content-grid">
+    <main>
+      <section id="about">
+        <h2>About Lumiere Metro</h2>
+        <article>
+          <p>Lumiere Metro blends riverside serenity with smart mobility. The city coordinates 24/7 public transit, art-infused walkways, and eco-districts to welcome every traveler.</p>
+          <ul>
+            <li>Population: 3.4 million residents, 2 million daily visitors.</li>
+            <li>Tech index ranking: Top 5 in sustainable urban planning.</li>
+            <li>Four interconnected river plazas and zero waste precincts.</li>
+          </ul>
+          <details>
+            <summary>History</summary>
+            <p>Founded on the convergence of two rivers, Lumiere Metro evolved from a river trading hub into a cultural and tech-forward metropolis after the 2080 resilience initiative.</p>
+          </details>
+          <details>
+            <summary>Culture</summary>
+            <p>Festival weeks celebrate digital murals, holographic concerts, and heritage markets featuring creators from every district.</p>
+          </details>
+          <details>
+            <summary>Climate</summary>
+            <p>Temperate, with waterfront breezes; planning reserves green cover that cools streets year-round.</p>
+          </details>
+        </article>
+      </section>
+      <section id="attractions">
+        <h2>Tourist Attractions</h2>
+        <article>
+          <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=60" alt="Future river plaza">
+          <h3>Riverfront Innovation Plaza</h3>
+          <p>Experience interactive light installations, floating gardens, and drone ballets that choreograph every evening.</p>
+        </article>
+        <article>
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=500&q=60" alt="Skyline hike">
+          <h3>Skyline Loop Trail</h3>
+          <p>Bike or walk elevated paths for stunning skyline views and augmented reality storytelling kiosks.</p>
+        </article>
+        <article>
+          <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=500&q=60" alt="Urban garden">
+          <h3>Solar Grove Garden</h3>
+          <p>A solar-powered arboretum with guided tours that explain the city's energy grid and native biodiversity.</p>
+        </article>
+      </section>
+      <section id="media">
+        <h2>Weather & Tourism Window</h2>
+        <iframe class="media-frame" width="560" height="315" title="Lumiere Metro tourism overview" src="https://www.youtube.com/embed/drT1lMOTbWA" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </section>
+      <section id="map-section">
+        <h2>Interactive Map</h2>
+        <div class="map-links">
+          <a href="https://www.google.com/maps/place/Los+Angeles,+CA" target="mapFrame">Cultural Pier</a>
+          <a href="https://www.google.com/maps/place/Chicago,+IL" target="mapFrame">Innovation District</a>
+          <a href="https://www.google.com/maps/place/San+Francisco,+CA" target="mapFrame">Skyline Loop</a>
+        </div>
+        <iframe name="mapFrame" class="map-frame" width="100%" height="420" title="Lumiere Metro focus map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.407216641641!2d-122.43856068467954!3d37.75781587975953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f7e4cfe4d8a0f%3A0x7c5d6a963c1a1d4f!2sMission%20District%2C%20San%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"></iframe>
+      </section>
+      <section id="canvas-section">
+        <h2>Canvas Welcome</h2>
+        <div class="canvas-wrapper">
+          <p>Canvas artwork draws the spirit of Lumiere Metro.</p>
+          <canvas id="welcomeCanvas" width="600" height="180"></canvas>
+        </div>
+      </section>
+    </main>
+    <aside>
+      <div class="aside-section">
+        <h2>Upcoming Events</h2>
+        <ul>
+          <li>Citylight Parade — March 5, 2026</li>
+          <li>Solar Grove Lantern Festival — March 20, 2026</li>
+          <li>Innovation Night Markets — Every Thursday</li>
+        </ul>
+      </div>
+      <div class="aside-section">
+        <h2>Quick Links</h2>
+        <ul>
+          <li><a href="https://www.smartcityexample.com/transport">Transit Tracker</a></li>
+          <li><a href="https://www.smartcityexample.com/tours">Guided Tours</a></li>
+          <li><a href="https://www.smartcityexample.com/stays">Stay & Dine</a></li>
+        </ul>
+      </div>
+      <div class="aside-section">
+        <h2>Emergency Contacts</h2>
+        <ul>
+          <li>City Helpline: 311</li>
+          <li>Public Safety: +1 (555) 102-1200</li>
+          <li>Health & Rescue: +1 (555) 102-3456</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+  <footer id="contact">
+    <div>© 2026 Lumiere Metro Smart City Council</div>
+    <div>Contact: <a href="mailto:visit@smartcityexample.com">visit@smartcityexample.com</a></div>
+    <div>
+      Social: <a href="https://twitter.com">Twitter</a> · <a href="https://instagram.com">Instagram</a> · <a href="https://linkedin.com">LinkedIn</a>
+    </div>
+  </footer>
+</body>
+</html>
