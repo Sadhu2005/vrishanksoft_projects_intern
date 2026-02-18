@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Digital Cultural Fest 2026 | Pulse of Creative Minds</title>
+  <meta name="description" content="Digital Cultural Fest 2026 portal featuring music, video, workshops, and interactive highlights from our college events." />
+  <meta name="keywords" content="Digital Cultural Fest, cultural portal, college events, live music, dance, drama" />
+  <meta name="author" content="Vrishank Soft Projects" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <base target="_blank" href="https://www.virtucollege.edu/events/" />
+  <style>
+    :root {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #111;
+      background: #f9f9fb;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(180deg, #f8fbff, #f1f5ff 50%, #e1e8ff);
+    }
+
+    header,
+    footer {
+      background: #0b1a46;
+      color: #fff;
+      padding: 1rem 2rem;
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo img {
+      height: 64px;
+      width: 64px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 2px solid #ffdd57;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    nav a {
+      color: #e1ebff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .tagline {
+      font-style: italic;
+      font-size: 1rem;
+      color: #ffdd57;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(260px, 1fr);
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+
+    section,
+    article,
+    aside {
+      background: #ffffffdd;
+      border-radius: 18px;
+      padding: 1.5rem;
+      box-shadow: 0 20px 40px rgba(10, 20, 50, 0.1);
+    }
+
+    section + section {
+      margin-top: 1rem;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    header h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 400;
+    }
+
+    #welcome-banner canvas {
+      width: 100%;
+      border: 5px solid #141c3b;
+      border-radius: 12px;
+      background: #fff;
+      display: block;
+    }
+
+    .media-group {
+      display: grid;
+      gap: 1rem;
+    }
+
+    video,
+    audio,
+    iframe {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(7, 24, 90, 0.2);
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .event-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .event-card h3 {
+      margin: 0.75rem 0 0.35rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: #0b1a46;
+      color: #fff;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+    }
+
+    aside ul {
+      list-style: disc inside;
+      padding-left: 0;
+      margin: 0.75rem 0;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #ffdd57;
+      text-decoration: none;
+    }
+
+    .grid-stack {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    @media (max-width: 960px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+
+      header h1 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=80&q=60" alt="Fest emblem" />
+      <div>
+        <h1>Digital Cultural Fest 2026</h1>
+        <h2>Virtu College of Arts & Technology</h2>
+      </div>
+    </div>
+    <div class="tagline">Where digital creativity meets cultural heritage.</div>
+    <nav>
+      <a href="#welcome-banner">Welcome</a>
+      <a href="#promo-video">Promo</a>
+      <a href="#audio-track">Soundtrack</a>
+      <a href="#highlights">Highlights</a>
+      <a href="#events">Events</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <div id="welcome-banner">
+        <canvas id="festCanvas" width="900" height="220">
+          Your browser does not support the canvas element.
+        </canvas>
+      </div>
+
+      <section id="promo-video">
+        <header>
+          <h2>Event Promo Video</h2>
+          <p>Experience the pulse of Digital Cultural Fest 2026.</p>
+        </header>
+        <video controls poster="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=60">
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.ogg" type="video/ogg" />
+          Your browser cannot play this video. Please upgrade your browser.
+        </video>
+      </section>
+
+      <section id="audio-track">
+        <header>
+          <h2>Background Music</h2>
+          <p>Play the sonic journey curated for this digital fest.</p>
+        </header>
+        <audio controls autoplay loop muted>
+          <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3" />
+          <source src="https://file-examples-com.github.io/uploads/2017/11/file_example_OOG_1MG.ogg" type="audio/ogg" />
+          Your browser does not support the audio element.
+        </audio>
+      </section>
+
+      <section id="highlights">
+        <header>
+          <h2>YouTube Highlights</h2>
+          <p>Looped excerpts from past cultural showcases.</p>
+        </header>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/5qap5aO4i9A?autoplay=1&mute=1&loop=1&playlist=5qap5aO4i9A" title="Digital Fest Highlights" allow="autoplay" loading="lazy"></iframe>
+      </section>
+
+      <article id="formats">
+        <header>
+          <h2>Multimedia Format Support</h2>
+          <p>We highlight formats that run smoothly on modern browsers.</p>
+        </header>
+        <details>
+          <summary>Video Formats (MP4, WebM, Ogg)</summary>
+          <ul>
+            <li>MP4 (H.264) ? Widely supported with hardware acceleration.</li>
+            <li>WebM (VP8/VP9) ? Great for streaming and compression efficiency.</li>
+            <li>Ogg (Theora) ? Open format for browsers that prefer royalty-free codecs.</li>
+          </ul>
+        </details>
+        <details>
+          <summary>Audio Formats (MP3, WAV, Ogg)</summary>
+          <ul>
+            <li>MP3 ? Great compatibility and relatively small file size.</li>
+            <li>WAV ? Higher fidelity for studio-ready content.</li>
+            <li>Ogg (Vorbis) ? Open-source option with excellent quality.</li>
+          </ul>
+        </details>
+      </article>
+
+      <section id="events">
+        <header>
+          <h2>In-Person & Digital Events</h2>
+          <p>Three days of competitions and cultural collabs.</p>
+        </header>
+        <div class="events-grid">
+          <article class="event-card">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=60" alt="Dance Competition" />
+            <h3>Dance Competition</h3>
+            <p>Rhythmic mashups choreographed by inter-department crews.</p>
+            <p class="badge">Day 1 ? 10:00 AM ? Auditorium A</p>
+          </article>
+          <article class="event-card">
+            <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=600&q=60" alt="Singing Competition" />
+            <h3>Singing Competition</h3>
+            <p>Solo and ensemble performances blending classical & digital sound design.</p>
+            <p class="badge">Day 1 ? 4:30 PM ? Zenith Hall</p>
+          </article>
+          <article class="event-card">
+            <img src="https://images.unsplash.com/photo-1515165562835-c8868edc4c94?auto=format&fit=crop&w=600&q=60" alt="Drama" />
+            <h3>Drama</h3>
+            <p>Immersive mixed-reality storytelling with live scoring.</p>
+            <p class="badge">Day 2 ? 2:00 PM ? Open Air Stage</p>
+          </article>
+          <article class="event-card">
+            <img src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?auto=format&fit=crop&w=600&q=60" alt="Coding Event" />
+            <h3>Coding Event</h3>
+            <p>Hackathon & creative scripting challenge for augmented culture apps.</p>
+            <p class="badge">Day 3 ? 11:00 AM ? Innovation Lab</p>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <aside>
+      <h2>Festival Sidebar</h2>
+      <div class="grid-stack">
+        <div>
+          <h3>Sponsors</h3>
+          <ul>
+            <li>Creative Minds Media</li>
+            <li>Ambient Audio Labs</li>
+            <li>FutureFrame Technologies</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Contacts</h3>
+          <ul>
+            <li>Fest Desk: +1-555-0172</li>
+            <li>Media Queries: +1-555-0198</li>
+            <li>Registration: +1-555-0114</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <h3>Registration</h3>
+        <p>
+          <a href="https://forms.gle/fest2026" rel="noopener">Register for workshops & competitions</a>
+        </p>
+        <h3>Event Updates</h3>
+        <p>Live schedule, backstage passes, and mentor calls posted every morning at 9:00 AM.</p>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <p>? 2026 Virtu College ? digitalculturalfest@virtu.edu</p>
+    <p>Follow: <a href="https://instagram.com/virtu_fest">Instagram</a> ? <a href="https://twitter.com/virtu_fest">X</a> ? <a href="https://youtube.com/virtu_fest">YouTube</a></p>
+    <p>123 Creative Drive, Metropolis City, Country</p>
+  </footer>
+
+  <script>
+    const canvas = document.getElementById('festCanvas');
+    if (canvas && canvas.getContext) {
+      const ctx = canvas.getContext('2d');
+      const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+      gradient.addColorStop(0, '#ffdd57');
+      gradient.addColorStop(1, '#0b1a46');
+
+      ctx.fillStyle = '#0d2a66';
+      ctx.fillRect(50, 40, 800, 120);
+      ctx.strokeStyle = gradient;
+      ctx.lineWidth = 6;
+      ctx.strokeRect(45, 35, 810, 130);
+
+      ctx.beginPath();
+      ctx.arc(canvas.width - 120, 160, 45, 0, Math.PI * 2);
+      ctx.fillStyle = '#ff4d68';
+      ctx.fill();
+      ctx.strokeStyle = '#fff';
+      ctx.lineWidth = 4;
+      ctx.stroke();
+
+      ctx.font = 'bold 32px "Segoe UI", sans-serif';
+      ctx.fillStyle = gradient;
+      ctx.fillText('Welcome to Cultural Fest 2026', 70, 110);
+    }
+  </script>
+</body>
+</html>
