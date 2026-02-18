@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Emergency &amp; City Service Portal</title>
+  <style>
+    :root {
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      color: #1d1f2a;
+      background: #f4f6fb;
+      --accent: #1b7df1;
+      --accent-dark: #0a4f96;
+      --card: #ffffff;
+      --shadow: 0 10px 30px rgba(17, 31, 64, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #eef2ff, #fdfdfd);
+    }
+
+    header {
+      background: #131a3f;
+      color: white;
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    header .logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #1b7df1, #0a4f96);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    header p {
+      margin: 0;
+      opacity: 0.8;
+    }
+
+    nav {
+      padding: 0 2rem;
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    nav ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #0b1b3a;
+      font-weight: 600;
+      padding: 0.75rem 1rem;
+      border-radius: 999px;
+      transition: background 0.2s ease;
+    }
+
+    nav a:hover {
+      background: rgba(27, 125, 241, 0.12);
+    }
+
+    #main-content {
+      max-width: 1200px;
+      margin: 2rem auto 1rem;
+      padding: 0 1.5rem 2rem;
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+      gap: 1.5rem;
+    }
+
+    article section {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    article h2 {
+      margin-top: 0;
+      font-size: 1.4rem;
+      color: var(--accent-dark);
+    }
+
+    .panel-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .panel-grid .card {
+      padding: 1rem;
+      border-radius: 12px;
+      background: #eef2ff;
+    }
+
+    .location-data {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .location-data div {
+      background: #fff;
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      border: 1px solid #dfe6f7;
+      min-height: 70px;
+    }
+
+    button,
+    select,
+    input {
+      font: inherit;
+    }
+
+    .primary-btn {
+      background: var(--accent);
+      border: none;
+      color: white;
+      padding: 0.75rem 1.2rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: transform 0.2s ease;
+      margin-right: 0.5rem;
+    }
+
+    .primary-btn:active {
+      transform: scale(0.97);
+    }
+
+    .secondary-btn {
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 0.6rem 1.2rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .drag-board,
+    .priority-zone {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      border: 2px dashed #c6d1ff;
+      border-radius: 12px;
+      min-height: 120px;
+      padding: 1rem;
+      background: #f8fbff;
+    }
+
+    .priority-zone {
+      background: #fff4f0;
+      border-color: #ffb390;
+    }
+
+    .service-card {
+      background: #1b7df1;
+      color: #fff;
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: grab;
+      box-shadow: 0 8px 20px rgba(21, 75, 138, 0.25);
+      user-select: none;
+    }
+
+    .service-card:active {
+      cursor: grabbing;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    form label {
+      font-weight: 600;
+      color: #2a2e48;
+    }
+
+    input,
+    select {
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      border: 1px solid #ccd4eb;
+      background: #fff;
+      width: 100%;
+    }
+
+    .storage-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .worker-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    output {
+      display: inline-block;
+      font-size: 1.5rem;
+      font-weight: 700;
+      min-width: 70px;
+    }
+
+    aside {
+      background: #fff;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    aside h3 {
+      margin: 0;
+      color: var(--accent-dark);
+    }
+
+    aside ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      margin-top: 1rem;
+      border-top: 1px solid #dfe6f7;
+      color: #4b4f63;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 900px) {
+      #main-content {
+        grid-template-columns: 1fr;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">SC</div>
+    <div>
+      <h1>Smart Emergency &amp; City Service Portal</h1>
+      <p>Real-time support for citizens of Meridian City</p>
+    </div>
+    <div>
+      <p>24/7 City Response Operations</p>
+    </div>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="#location-section">Location</a></li>
+      <li><a href="#priority-section">Priority Board</a></li>
+      <li><a href="#storage-section">Preferences</a></li>
+      <li><a href="#worker-section">Alert Counter</a></li>
+      <li><a href="#contacts">Contacts</a></li>
+    </ul>
+  </nav>
+  <section id="main-content">
+    <article>
+      <section id="location-section">
+        <h2>Find My Current Location</h2>
+        <p>Detect your GPS position and share it with responding teams.</p>
+        <div class="panel-grid">
+          <div class="card">
+            <button class="primary-btn" id="detect-location">Detect My Location</button>
+            <span id="location-status">Awaiting action</span>
+          </div>
+          <div class="card">
+            <strong>Last Timestamp:</strong>
+            <p id="timestamp">—</p>
+          </div>
+        </div>
+        <div class="location-data">
+          <div>
+            <strong>Latitude</strong>
+            <p id="latitude">—</p>
+          </div>
+          <div>
+            <strong>Longitude</strong>
+            <p id="longitude">—</p>
+          </div>
+          <div>
+            <strong>Accuracy (meters)</strong>
+            <p id="accuracy">—</p>
+          </div>
+        </div>
+        <div>
+          <iframe
+            id="map-frame"
+            title="City location"
+            width="100%"
+            height="260"
+            style="border:0; border-radius:12px;"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=Meridian%20City&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed">
+          </iframe>
+        </div>
+      </section>
+
+      <section id="priority-section">
+        <h2>Emergency Service Priority Board</h2>
+        <p>Drag critical services into the high-priority zone so response crews focus on the right areas.</p>
+        <div class="drag-board" id="draggable-services">
+          <div class="service-card" draggable="true" id="ambulance">🚑 Ambulance</div>
+          <div class="service-card" draggable="true" id="police">🚓 Police Squad</div>
+          <div class="service-card" draggable="true" id="fire">🔥 Fire Department</div>
+          <div class="service-card" draggable="true" id="hospital">🏥 Trauma Hospital</div>
+        </div>
+        <div class="priority-zone" id="priority-target">
+          <p style="margin:0;">Drop high-priority services here</p>
+        </div>
+      </section>
+
+      <section id="storage-section">
+        <h2>Save My Preferences</h2>
+        <p>Store your preferred emergency contact so the portal remembers how you like to be assisted.</p>
+        <form id="preferences-form">
+          <label for="user-name">User Name</label>
+          <input type="text" id="user-name" placeholder="e.g. Priya Singh" required>
+          <label for="preferred-service">Preferred Emergency Service</label>
+          <select id="preferred-service">
+            <option value="ambulance">🚑 Ambulance</option>
+            <option value="police">🚓 Police</option>
+            <option value="fire">🔥 Fire Department</option>
+            <option value="hospital">🏥 Hospital</option>
+          </select>
+          <div class="storage-actions">
+            <button type="button" class="primary-btn" id="save-preferences">Save Preferences</button>
+            <button type="button" class="secondary-btn" id="remove-preferences">Remove Saved Name</button>
+          </div>
+        </form>
+        <div class="panel-grid">
+          <div class="card">
+            <strong>Saved User:</strong>
+            <p id="saved-user">—</p>
+          </div>
+          <div class="card">
+            <strong>Saved Service:</strong>
+            <p id="saved-service">—</p>
+          </div>
+          <div class="card">
+            <strong>Emergency Help button clicks (session)</strong>
+            <p id="session-count">0</p>
+            <button class="secondary-btn" id="emergency-help">Emergency Help</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="worker-section">
+        <h2>Emergency Alert Counter</h2>
+        <p>The city alert system simulates a heavy calculation in a background worker.</p>
+        <div class="worker-controls">
+          <button class="primary-btn" id="start-worker">Start Worker</button>
+          <button class="secondary-btn" id="stop-worker">Stop Worker</button>
+          <strong>Status:</strong>
+          <span id="worker-status">Idle</span>
+        </div>
+        <p>
+          Counter value: <output id="worker-output">0</output>
+        </p>
+      </section>
+    </article>
+
+    <aside id="contacts">
+      <h3>Emergency Contacts</h3>
+      <ul>
+        <li>Meridian City Control Room — <strong>101</strong> (24/7)</li>
+        <li>Traffic Operations — <strong>102</strong></li>
+        <li>Fire &amp; Rescue — <strong>103</strong></li>
+        <li>Disaster Relief Hotline — <strong>1800-555-0123</strong></li>
+      </ul>
+      <h3>Citizen Services</h3>
+      <ul>
+        <li>Water &amp; Sewage — <strong>104</strong></li>
+        <li>Electricity Trouble — <strong>105</strong></li>
+        <li>Public Health Desk — <strong>106</strong></li>
+      </ul>
+    </aside>
+  </section>
+
+  <footer>
+    <p>© 2026 Meridian City Smart Services · Designed for the Municipal Corporation Emergency Team</p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const detectBtn = document.getElementById("detect-location");
+      const statusEl = document.getElementById("location-status");
+      const latEl = document.getElementById("latitude");
+      const lngEl = document.getElementById("longitude");
+      const accuracyEl = document.getElementById("accuracy");
+      const timestampEl = document.getElementById("timestamp");
+      const mapFrame = document.getElementById("map-frame");
+
+      detectBtn.addEventListener("click", function() {
+        if (!navigator.geolocation) {
+          statusEl.textContent = "Geolocation API not supported in this browser";
+          return;
+        }
+        statusEl.textContent = "Locating…";
+        navigator.geolocation.getCurrentPosition(handleSuccess, handleError, {
+          enableHighAccuracy: true,
+          timeout: 12000,
+          maximumAge: 0
+        });
+      });
+
+      function handleSuccess(position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        const accuracy = position.coords.accuracy;
+        const time = new Date(position.timestamp).toLocaleString();
+        statusEl.textContent = "Location captured";
+        latEl.textContent = latitude.toFixed(6);
+        lngEl.textContent = longitude.toFixed(6);
+        accuracyEl.textContent = accuracy.toFixed(2) + " m";
+        timestampEl.textContent = time;
+        mapFrame.src = "https://maps.google.com/maps?q=" + latitude + "," + longitude + "&z=15&output=embed";
+      }
+
+      function handleError(error) {
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            statusEl.textContent = "Permission denied. Please allow location access.";
+            break;
+          case error.POSITION_UNAVAILABLE:
+            statusEl.textContent = "Position unavailable. Try again later.";
+            break;
+          case error.TIMEOUT:
+            statusEl.textContent = "Request timed out. Relocate and retry.";
+            break;
+          default:
+            statusEl.textContent = "Unknown error locating you.";
+            break;
+        }
+      }
+
+      const draggableItems = document.querySelectorAll(".service-card");
+      const priorityZone = document.getElementById("priority-target");
+
+      draggableItems.forEach(function(item) {
+        item.addEventListener("dragstart", function(event) {
+          event.dataTransfer.setData("text/plain", event.target.id);
+          event.dataTransfer.effectAllowed = "move";
+        });
+      });
+
+      priorityZone.addEventListener("dragover", function(event) {
+        event.preventDefault();
+        event.dataTransfer.dropEffect = "move";
+      });
+
+      priorityZone.addEventListener("drop", function(event) {
+        event.preventDefault();
+        const id = event.dataTransfer.getData("text/plain");
+        const dragged = document.getElementById(id);
+        if (dragged) {
+          priorityZone.appendChild(dragged);
+        }
+      });
+
+      const nameInput = document.getElementById("user-name");
+      const serviceSelect = document.getElementById("preferred-service");
+      const saveBtn = document.getElementById("save-preferences");
+      const removeBtn = document.getElementById("remove-preferences");
+      const savedUserEl = document.getElementById("saved-user");
+      const savedServiceEl = document.getElementById("saved-service");
+      const sessionCountEl = document.getElementById("session-count");
+      const emergencyHelpBtn = document.getElementById("emergency-help");
+
+      const localNameKey = "smartPortalUserName";
+      const localServiceKey = "smartPortalService";
+      const sessionCounterKey = "smartPortalSessionClicks";
+
+      function loadPreferences() {
+        const savedName = localStorage.getItem(localNameKey);
+        const savedService = localStorage.getItem(localServiceKey);
+        savedUserEl.textContent = savedName || "No one saved yet";
+        savedServiceEl.textContent = savedService || "No preference yet";
+        if (savedName) {
+          nameInput.value = savedName;
+        }
+        if (savedService) {
+          serviceSelect.value = savedService;
+        }
+      }
+
+      function updateSessionCounter() {
+        const count = Number(sessionStorage.getItem(sessionCounterKey) || 0);
+        sessionCountEl.textContent = count;
+      }
+
+      saveBtn.addEventListener("click", function() {
+        const name = nameInput.value.trim();
+        const service = serviceSelect.value;
+        if (!name) {
+          alert("Please add a name before saving preferences.");
+          return;
+        }
+        localStorage.setItem(localNameKey, name);
+        localStorage.setItem(localServiceKey, service);
+        loadPreferences();
+      });
+
+      removeBtn.addEventListener("click", function() {
+        localStorage.removeItem(localNameKey);
+        localStorage.removeItem(localServiceKey);
+        nameInput.value = "";
+        loadPreferences();
+      });
+
+      emergencyHelpBtn.addEventListener("click", function() {
+        const current = Number(sessionStorage.getItem(sessionCounterKey) || 0) + 1;
+        sessionStorage.setItem(sessionCounterKey, current);
+        updateSessionCounter();
+      });
+
+      loadPreferences();
+      updateSessionCounter();
+
+      const startWorkerBtn = document.getElementById("start-worker");
+      const stopWorkerBtn = document.getElementById("stop-worker");
+      const workerOutput = document.getElementById("worker-output");
+      const workerStatus = document.getElementById("worker-status");
+      let emergencyWorker = null;
+
+      function setWorkerStatus(message) {
+        workerStatus.textContent = message;
+      }
+
+      startWorkerBtn.addEventListener("click", function() {
+        if (!window.Worker) {
+          setWorkerStatus("This browser does not support Web Workers");
+          return;
+        }
+        if (emergencyWorker) {
+          setWorkerStatus("Worker already running");
+          return;
+        }
+        emergencyWorker = new Worker("emergency_worker.js");
+        emergencyWorker.onmessage = function(event) {
+          workerOutput.textContent = event.data;
+        };
+        emergencyWorker.onerror = function() {
+          setWorkerStatus("Worker encountered an error");
+        };
+        setWorkerStatus("Running");
+      });
+
+      stopWorkerBtn.addEventListener("click", function() {
+        if (emergencyWorker) {
+          emergencyWorker.terminate();
+          emergencyWorker = null;
+          setWorkerStatus("Stopped");
+          workerOutput.textContent = "0";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+"@'
