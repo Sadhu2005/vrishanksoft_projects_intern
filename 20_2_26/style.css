@@ -1,0 +1,108 @@
+/*
+ * Assignment 13 – External CSS
+ * Use this file for: body, default font, all p, all h2, layout (margin/padding)
+ */
+
+/* 5. Universal Selector – common styling for all elements */
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Body – background and base layout (External CSS) */
+body {
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* 1. Element Selector – style all <p> elements */
+p {
+    font-size: 1rem;
+    margin: 0 0 1rem 0;
+    padding: 0 0.5rem;
+}
+
+/* Grouping Selector – h1, h2, h3 common base */
+h1, h2, h3 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+}
+
+/* 2. Element Selector – all <h2> elements (External CSS) */
+h2 {
+    font-size: 1.5rem;
+    color: #1a237e;
+    padding: 0.25rem 0.5rem;
+    border-left: 4px solid #1a237e;
+    margin-bottom: 1rem;
+}
+
+/* Layout spacing – main container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* h1 color in EXTERNAL CSS (Cascading: 1st – overridden by Internal, then by Inline on that h1) */
+h1 {
+    color: #1565c0;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+/* Class Selector – reusable classes */
+.highlight {
+    background-color: #fff9c4;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+}
+
+.center {
+    text-align: center;
+}
+
+/* Card style for faculty (border around cards) */
+.card {
+    border: 2px solid #3949ab;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* Element + Class: p.highlight */
+p.highlight {
+    border-left: 4px solid #ff9800;
+    padding-left: 1rem;
+}
+
+/* Section layout – margin and padding (External CSS) */
+section {
+    margin-bottom: 2rem;
+    padding: 1.25rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+/* 3. ID Selector – unique section #contact */
+#contact {
+    background-color: #e8eaf6;
+    border-left: 4px solid #3949ab;
+}
+
+/* Footer */
+footer {
+    margin-top: 2rem;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+}

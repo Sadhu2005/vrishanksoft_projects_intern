@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Science & Engineering – Department Profile</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Internal CSS: special section (achievements box), redefine h1 color for cascading, border on section -->
+    <style>
+        /* Internal CSS – redefine <h1> color (overrides External CSS; inline will override this on specific element) */
+        h1 {
+            color: #2e7d32;
+        }
+
+        /* Special section – achievements highlight box */
+        .achievements-box {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border: 2px solid #2e7d32;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .achievements-box h3 {
+            color: #1b5e20;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Border styling for a section (Internal CSS) */
+        section.about-section {
+            border: 2px dashed #3949ab;
+            padding: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- CASCADING ORDER: h1 color is set in (1) External CSS = blue, (2) Internal CSS = green, (3) Inline below = red. Inline wins (highest priority). -->
+        <h1 class="center" style="color: #b71c1c;">Computer Science & Engineering</h1>
+
+        <!-- Inline CSS: urgent announcement -->
+        <p class="center" style="background-color: #ffebee; color: #c62828; font-weight: bold; padding: 12px; border: 2px solid #c62828; border-radius: 8px;">
+            Admissions Open 2026
+        </p>
+
+        <!-- 1. About the Department -->
+        <section class="about-section">
+            <h2>About the Department</h2>
+            <p>
+                Established in 2005, the Department of Computer Science & Engineering offers UG and PG programs
+                with a focus on industry-relevant curriculum and research.
+            </p>
+            <!-- Inline CSS: one highlighted paragraph -->
+            <p style="background-color: #e3f2fd; padding: 12px; border-left: 4px solid #1976d2;">
+                Our department is NAAC accredited and maintains strong ties with the industry for placements and live projects.
+            </p>
+        </section>
+
+        <!-- 2. Courses Offered -->
+        <section>
+            <h2>Courses Offered</h2>
+            <ul>
+                <li>Data Structures</li>
+                <li>Web Technologies</li>
+                <li>Artificial Intelligence</li>
+                <li>Machine Learning</li>
+                <li>Database Management Systems</li>
+                <li>Computer Networks</li>
+            </ul>
+        </section>
+
+        <!-- 3. Faculty Highlights (cards with border – from External CSS .card) -->
+        <section>
+            <h2>Faculty Highlights</h2>
+            <div class="card">
+                <h3>Dr. A. Kumar</h3>
+                <p>Professor &amp; HOD – Data Structures, Algorithms</p>
+            </div>
+            <div class="card">
+                <h3>Ms. B. Rao</h3>
+                <p>Assistant Professor – Web Technologies, DBMS</p>
+            </div>
+            <div class="card">
+                <h3>Dr. C. Patel</h3>
+                <p>Associate Professor – Artificial Intelligence, Machine Learning</p>
+            </div>
+        </section>
+
+        <!-- 4. Achievements (Internal CSS: .achievements-box) -->
+        <section>
+            <h2>Achievements</h2>
+            <div class="achievements-box">
+                <h3>Recent Highlights</h3>
+                <ul>
+                    <li>100% placement in 2025</li>
+                    <li>5 University Rank Holders</li>
+                    <li>National Hackathon winners – 2024</li>
+                    <li>Industry MoUs with leading IT companies</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 5. Contact Information – ID selector #contact in External CSS -->
+        <section id="contact">
+            <h2>Contact Information</h2>
+            <p><strong>Email:</strong> cse@college.edu</p>
+            <p><strong>Phone:</strong> 9876543210</p>
+            <p><strong>Address:</strong> Department of CSE, Main Building, First Floor</p>
+            <p class="highlight">For admission queries, visit the office during 10:00 AM – 4:00 PM on working days.</p>
+        </section>
+
+        <!-- 6. Footer -->
+        <footer>
+            <p class="center">&copy; 2026 Department of Computer Science &amp; Engineering. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
