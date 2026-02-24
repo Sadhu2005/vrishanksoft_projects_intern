@@ -1,0 +1,306 @@
+/*
+ * Assignment 15 – CityCare Hospital Landing Page
+ * CSS: Backgrounds, Borders, Margin, Padding, Opacity, RGBA
+ */
+
+/* ---------- Base & Container (margin: auto to center) ---------- */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* margin shorthand: 2 values (top/bottom, left/right); margin: auto centers container */
+.container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* ---------- 1. Header ---------- */
+.site-header {
+    background-color: #0d47a1;
+    color: white;
+    /* padding shorthand: 4 values (top right bottom left) */
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    /* border shorthand: width style color */
+    border-bottom: 3px solid #002171;
+}
+
+.site-header h1 {
+    margin: 0 0 0.75rem 0;
+    font-size: 1.75rem;
+}
+
+/* margin: 0 (1 value - all sides) */
+.main-nav {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    /* margin-right only */
+    margin-right: 1.25rem;
+}
+
+/* ---------- 2. Hero Section ---------- */
+/* background-image, no-repeat, position center top, attachment fixed */
+.hero {
+    min-height: 320px;
+    background-image: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1200');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    /* padding shorthand: 3 values (top left/right bottom) */
+    padding: 2rem 3rem 2rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.hero-overlay h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 2rem;
+}
+
+.hero-overlay p {
+    margin: 0;
+}
+
+/* ---------- 3. About Section ---------- */
+/* background-color - section 1 of 3+ different colors */
+.about-section {
+    background-color: #e3f2fd;
+    /* border sides: border-left (color name), border-bottom (HEX) */
+    border-left: 4px solid DodgerBlue;
+    border-bottom: 2px solid #2196f3;
+    /* padding shorthand: 2 values */
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+}
+
+.about-section h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+/* ---------- 4. Services Section ---------- */
+/* background shorthand: color url repeat position; background-attachment: scroll */
+.services-section {
+    background: #f5f5f5 url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400') repeat-x center;
+    background-attachment: scroll;
+    /* border: dotted (HSL color) */
+    border: 2px dotted hsl(200, 50%, 40%);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.services-section h2 {
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+}
+
+/* Border styles: solid (px), dashed, dotted, double, groove - across service boxes */
+.service-box {
+    background: white;
+    text-align: center;
+    font-weight: 600;
+    /* border width: px value; border style: solid; border color: RGB */
+    border: 2px solid rgb(13, 71, 161);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.service-box:nth-child(2) {
+    border-style: dashed;
+    border-color: #1565c0;
+}
+
+.service-box:nth-child(3) {
+    border-style: dotted;
+    border-width: medium;
+}
+
+.service-box:nth-child(4) {
+    border: 3px double #0d47a1;
+}
+
+.service-box:nth-child(5) {
+    border: thick groove #1976d2;
+}
+
+/* ---------- 5. Doctors Section ---------- */
+.doctors-section {
+    background-color: #fff8e1;
+    /* border-top (side) */
+    border-top: 4px solid #ff9800;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.doctors-section h2 {
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+}
+
+.doctors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Doctor cards: border, padding, margin, border-radius */
+.doctor-card {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+    /* margin shorthand: 4 values */
+    margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+    /* padding shorthand: 1 value */
+    padding: 1rem;
+}
+
+.doctor-image {
+    height: 120px;
+    background-color: #e3f2fd;
+    margin: 0 0 1rem 0;
+    border-radius: 8px;
+}
+
+.doctor-card h3 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.1rem;
+}
+
+.doctor-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* ---------- Opacity: one section using opacity ---------- */
+.doctors-section .doctor-card:nth-child(2) {
+    opacity: 0.95;
+}
+
+/* ---------- 6. Emergency Section – RGBA transparency ---------- */
+.emergency-section {
+    margin-bottom: 2rem;
+    padding: 1rem;
+}
+
+/* RGBA: red background, 60% opacity (alpha 0.6) */
+.emergency-box {
+    background-color: rgba(211, 47, 47, 0.6);
+    color: white;
+    text-align: center;
+    border: 3px solid #b71c1c;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+}
+
+.emergency-box h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+}
+
+.emergency-box p {
+    margin: 0;
+}
+
+/* ---------- 7. Contact Section ---------- */
+.contact-section {
+    background-color: #e8f5e9;
+    border: 2px inset #2e7d32;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+}
+
+.contact-section h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+
+/* padding individual sides; margin inherit (child inherits from parent where applicable) */
+.contact-section p {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 0.5rem;
+}
+
+/* Rounded button */
+.btn {
+    display: inline-block;
+    background: #2e7d32;
+    color: white;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 24px;
+    border: 2px solid #1b5e20;
+    margin-top: 0.5rem;
+    font-weight: 600;
+}
+
+.btn:hover {
+    background: #1b5e20;
+}
+
+/* ---------- 8. Footer ---------- */
+.site-footer {
+    background-color: #263238;
+    color: #b0bec5;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+    border-top: 4px ridge #37474f;
+}
+
+.site-footer p {
+    margin: 0;
+    padding: 0;
+}
+
+/* padding: inherit (inherits from .site-footer padding) */
+.footer-note {
+    padding: inherit;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+/* Section base – margin-bottom (individual side) */
+.section {
+    margin-bottom: 2rem;
+}
+
+/* margin inherit example */
+.hero-overlay p {
+    margin: inherit;
+}
