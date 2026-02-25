@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile – City College</title>
+    <!-- Internal CSS only -->
+    <style>
+        /* Base layout */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f6f9;
+        }
+
+        .page-wrapper {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        /* 1. Header Section – height, padding, background, outline */
+        .header {
+            height: 120px;
+            padding: 1rem 1.5rem;
+            background-color: #283593;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            outline: 3px solid #1a237e;
+            outline-offset: 4px;
+            border-radius: 8px;
+        }
+
+        .college-name {
+            font-size: 1.3rem;
+            margin: 0;
+        }
+
+        .page-title {
+            font-size: 1rem;
+            margin: 0.25rem 0 0 0;
+            opacity: 0.9;
+        }
+
+        /* 2. Student Profile Card */
+        .profile-section {
+            margin-top: 1.5rem;
+        }
+
+        .profile-card {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border: 2px solid #c5cae9;
+            outline: 3px solid #3949ab;
+            outline-offset: 6px;
+            border-radius: 10px;
+            min-height: 220px;
+            display: grid;
+            grid-template-columns: minmax(120px, 180px) 1fr;
+            gap: 1rem;
+        }
+
+        .profile-photo-wrapper {
+            max-width: 180px;
+        }
+
+        .profile-photo {
+            width: 100%;
+            height: auto; /* Responsive image */
+            display: block;
+            border-radius: 8px;
+            border: 2px solid #9fa8da;
+        }
+
+        .profile-info h2 {
+            margin: 0 0 0.25rem 0;
+        }
+
+        .profile-info p {
+            margin: 0.15rem 0;
+        }
+
+        .bio {
+            margin-top: 0.5rem;
+        }
+
+        /* 3. Responsive behavior helpers */
+        .profile-info,
+        .profile-card,
+        .outline-demo-grid,
+        .auto-initial-grid {
+            max-width: 100%;
+        }
+
+        /* 4. Box Model calculation (for evaluation)
+           Example:
+           width: 400px;
+           padding: 20px;
+           border: 5px solid black;
+
+           Total width =
+           content width
+           + left padding + right padding
+           + left border  + right border
+
+           = 400px + 20px + 20px + 5px + 5px
+           = 450px total width
+        */
+
+        /* 5. Outline Demonstration */
+        .outline-demo-section {
+            margin-top: 2rem;
+        }
+
+        .outline-demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+
+        .outline-box {
+            background-color: #fff;
+            padding: 0.75rem;
+            text-align: center;
+            min-height: 60px;
+        }
+
+        .outline-dotted {
+            outline-style: dotted;
+            outline-width: 2px;
+            outline-color: #1e88e5;
+        }
+
+        .outline-dashed {
+            outline: 2px dashed #e53935; /* shorthand */
+        }
+
+        .outline-solid {
+            outline-width: 3px;
+            outline-style: solid;
+            outline-color: #43a047;
+        }
+
+        .outline-offset-positive {
+            outline: 3px solid #6a1b9a;
+            outline-offset: 6px;
+        }
+
+        .outline-offset-negative {
+            outline: 3px solid #fb8c00;
+            outline-offset: -4px;
+        }
+
+        /* 7. Rounded Outline (border-radius + outline) */
+        .rounded-outline {
+            border-radius: 12px;
+        }
+
+        /* 6. auto vs initial – height examples */
+        .auto-initial-section {
+            margin-top: 2rem;
+        }
+
+        .auto-initial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        .auto-box,
+        .initial-box {
+            border: 1px solid #b0bec5;
+            padding: 0.75rem;
+            background-color: #ffffff;
+        }
+
+        .auto-box {
+            height: auto;
+        }
+
+        .initial-box {
+            height: initial;
+        }
+
+        .section-title {
+            margin: 2rem 0 0.75rem 0;
+            font-size: 1.1rem;
+        }
+
+        /* Footer-style info */
+        .note {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+        }
+
+        /* Height / width min / max demonstration on container below */
+        .extra-box {
+            width: 100%;
+            max-width: 500px;
+            min-width: 260px;
+            min-height: 80px;
+            max-height: 200px;
+            margin: 1.5rem auto;
+            padding: 0.75rem 1rem;
+            border: 1px solid #cfd8dc;
+            background-color: #ffffff;
+        }
+
+        @media (max-width: 600px) {
+            .profile-card {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <!-- 1. Header Section -->
+        <header class="header">
+            <h1 class="college-name">City College of Engineering</h1>
+            <p class="page-title">Student Profile</p>
+        </header>
+
+        <!-- 2. Student Profile Card -->
+        <section class="profile-section">
+            <div class="profile-card">
+                <div class="profile-photo-wrapper">
+                    <img class="profile-photo" src="https://via.placeholder.com/300x300.png?text=Student+Photo" alt="Student photo">
+                </div>
+                <div class="profile-info">
+                    <h2>John Doe</h2>
+                    <p><strong>USN:</strong> 1CC22CS001</p>
+                    <p><strong>Branch:</strong> Computer Science &amp; Engineering</p>
+                    <p><strong>Email:</strong> john.doe@example.com</p>
+                    <p class="bio">
+                        A passionate learner interested in web development, data structures, and problem solving.
+                        Actively participates in coding contests and college technical events.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Outline Demonstration -->
+        <section class="outline-demo-section">
+            <h3 class="section-title">Outline Demonstration</h3>
+            <div class="outline-demo-grid">
+                <div class="outline-box outline-dotted">Dotted outline</div>
+                <div class="outline-box outline-dashed">Dashed outline</div>
+                <div class="outline-box outline-solid rounded-outline">Solid + rounded</div>
+                <div class="outline-box outline-offset-positive">Positive offset</div>
+                <div class="outline-box outline-offset-negative">Negative offset</div>
+            </div>
+        </section>
+
+        <!-- 6. auto vs initial -->
+        <section class="auto-initial-section">
+            <h3 class="section-title">Height: auto vs initial</h3>
+            <div class="auto-initial-grid">
+                <div class="auto-box">
+                    <strong>height: auto;</strong>
+                    <p>
+                        This box grows with its content. Add more text and the height will adjust
+                        automatically based on the content size in this container.
+                    </p>
+                </div>
+                <div class="initial-box">
+                    <strong>height: initial;</strong>
+                    <p>
+                        This box uses the initial (default) property value from the browser.
+                        For height, the initial value is also auto, so behavior is similar here.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Extra box for min/max width & height demo -->
+        <section>
+            <h3 class="section-title">Min / Max Width and Height Demo</h3>
+            <div class="extra-box">
+                This box uses:
+                <code>width: 100%;</code>,
+                <code>max-width: 500px;</code>,
+                <code>min-width: 260px;</code>,
+                <code>min-height: 80px;</code>,
+                <code>max-height: 200px;</code>.
+                Resize the browser to see how it stays readable without horizontal scrolling.
+            </div>
+        </section>
+
+        <p class="note">
+            This page uses only HTML and internal CSS to demonstrate width/height, the CSS box model,
+            min/max constraints, and outline properties for a responsive student profile layout.
+        </p>
+    </div>
+</body>
+</html>
+
