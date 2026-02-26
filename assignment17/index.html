@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College E-Magazine – Campus Voice</title>
+    <!-- Google Fonts: 2 fonts with fallbacks -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base – Google Fonts with fallback */
+        body {
+            font-family: 'Source Sans 3', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #222;
+            background-color: #fafafa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+        }
+
+        /* ========== 1. Header Section ========== */
+        .magazine-header {
+            text-align: center;
+            background-color: #1a237e;
+            color: #fff;
+            padding: 2rem 1rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            /* Simple text-shadow */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .magazine-header .college-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            opacity: 0.95;
+            letter-spacing: 0.15em;
+        }
+
+        .magazine-header .magazine-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin: 0.5rem 0;
+        }
+
+        .magazine-header .subtitle {
+            font-size: 0.9rem;
+            text-transform: none;
+            font-family: 'Source Sans 3', sans-serif;
+            opacity: 0.9;
+        }
+
+        /* ========== 2. Featured Article Section ========== */
+        .featured-article {
+            background-color: #fff;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid #1a237e;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .featured-article .article-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.75rem;
+            color: #1a237e;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .featured-article .author-name {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .featured-article .article-content {
+            font-size: 1rem;
+            /* 1rem = root font size (browser default usually 16px) */
+            line-height: 1.8;
+            letter-spacing: 0.02em;
+            word-spacing: 0.15em;
+            text-align: justify;
+            text-align-last: left;
+            text-indent: 2em;
+            font-family: 'Source Sans 3', 'Segoe UI', sans-serif;
+        }
+
+        .featured-article .article-content p {
+            margin: 0 0 1rem 0;
+        }
+
+        .featured-article .article-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ========== 3. Text Decoration Demonstration ========== */
+        .decoration-section {
+            margin-bottom: 2rem;
+        }
+
+        .decoration-section h3 {
+            margin: 1.5rem 0 1rem 0;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .decoration-underline {
+            text-decoration: underline;
+            text-decoration-color: #1565c0;
+            text-decoration-thickness: 2px;
+        }
+
+        .decoration-overline {
+            text-decoration: overline;
+            text-decoration-style: solid;
+            text-decoration-color: #2e7d32;
+        }
+
+        .decoration-line-through {
+            text-decoration: line-through;
+            text-decoration-color: #c62828;
+        }
+
+        .decoration-double {
+            text-decoration: underline;
+            text-decoration-style: double;
+            text-decoration-thickness: 3px;
+            text-decoration-color: #6a1b9a;
+        }
+
+        .decoration-wavy {
+            text-decoration: underline wavy #e65100;
+            /* shorthand: line style color */
+        }
+
+        .decoration-shorthand {
+            text-decoration: overline dashed #00838f 2px;
+            /* shorthand: line style color thickness */
+        }
+
+        /* ========== 4. Text Transformation Section ========== */
+        .transform-section {
+            margin-bottom: 2rem;
+        }
+
+        .transform-section .uppercase {
+            text-transform: uppercase;
+        }
+
+        .transform-section .lowercase {
+            text-transform: lowercase;
+        }
+
+        .transform-section .capitalize {
+            text-transform: capitalize;
+        }
+
+        .transform-section p {
+            padding: 0.5rem 0;
+            margin: 0;
+        }
+
+        /* ========== 5. Text Shadow Section ========== */
+        .shadow-section {
+            margin-bottom: 2rem;
+        }
+
+        .shadow-simple {
+            text-shadow: 2px 2px 3px #999;
+            font-size: 1.5rem;
+        }
+
+        .shadow-blur {
+            text-shadow: 0 0 10px #1565c0, 0 0 20px #1565c0;
+            font-size: 1.5rem;
+            color: #0d47a1;
+        }
+
+        .shadow-multiple {
+            text-shadow:
+                0 0 5px #fff,
+                0 0 10px #e040fb,
+                0 0 20px #e040fb,
+                0 0 40px #e040fb;
+            font-size: 1.5rem;
+            color: #fff;
+            background-color: #1a1a1a;
+            padding: 1rem;
+            display: inline-block;
+        }
+
+        /* ========== 6. Font Properties Demonstration ========== */
+        .font-demo-section {
+            margin-bottom: 2rem;
+        }
+
+        .font-style-normal {
+            font-style: normal;
+        }
+
+        .font-style-italic {
+            font-style: italic;
+        }
+
+        .font-style-oblique {
+            font-style: oblique;
+        }
+
+        .font-weight-normal {
+            font-weight: normal;
+        }
+
+        .font-weight-bold {
+            font-weight: bold;
+        }
+
+        .font-weight-900 {
+            font-weight: 900;
+        }
+
+        .font-variant-small-caps {
+            font-variant: small-caps;
+        }
+
+        .font-shorthand {
+            font: italic 600 1.1rem 'Playfair Display', Georgia, serif;
+            /* shorthand: style weight size/line-height family */
+        }
+
+        .font-demo-section p {
+            margin: 0.4rem 0;
+        }
+
+        /* ========== 7. Font Size Units (with comments in CSS) ========== */
+        .font-size-section {
+            margin-bottom: 2rem;
+        }
+
+        /* px: absolute, 18px = 18 pixels regardless of parent */
+        .size-px {
+            font-size: 18px;
+        }
+
+        /* em: relative to parent. If parent is 16px, 1.5em = 24px */
+        .size-em {
+            font-size: 1.2em;
+        }
+
+        /* rem: relative to root (html). 1.25rem ≈ 20px when root is 16px */
+        .size-rem {
+            font-size: 1.25rem;
+        }
+
+        /* vw: viewport width. 3vw = 3% of viewport width (responsive) */
+        .size-vw {
+            font-size: 3vw;
+        }
+
+        .font-size-section p {
+            margin: 0.5rem 0;
+        }
+
+        /* ========== 8. Google Fonts used: Playfair Display (headings), Source Sans 3 (body) – fallbacks in font-family ========== */
+
+        /* ========== 9. Icons Section (Font Awesome) ========== */
+        .icons-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: #e8eaf6;
+            border-radius: 8px;
+        }
+
+        .icons-section h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .icons-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .icons-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .icons-list .fa-solid {
+            color: #1a237e;
+            font-size: 1.5rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .icons-list .fa-home { color: #1565c0; }
+        .icons-list .fa-book { color: #2e7d32; font-size: 1.4rem; }
+        .icons-list .fa-envelope { color: #c62828; text-shadow: 0 0 4px rgba(198,40,40,0.4); }
+        .icons-list .fa-user { color: #6a1b9a; font-size: 1.6rem; }
+        .icons-list .fa-bell { color: #e65100; }
+
+        .section-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            color: #1a237e;
+            font-size: 1.35rem;
+            margin: 2rem 0 1rem 0;
+            padding-bottom: 0.25rem;
+            border-bottom: 2px solid #c5cae9;
+        }
+
+        .section-title:first-of-type {
+            margin-top: 0;
+        }
+
+        /* Editorial / Quote styling */
+        .quote-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            padding: 1rem 1.5rem;
+            border-left: 4px solid #1976d2;
+            margin: 1.5rem 0;
+            font-style: italic;
+            white-space: normal;
+        }
+
+        .font-explanation {
+            margin-top: 1rem;
+        }
+
+        .magazine-footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 1. Header Section -->
+        <header class="magazine-header">
+            <p class="college-name">City College of Engineering</p>
+            <h1 class="magazine-title">Campus Voice</h1>
+            <p class="subtitle">Your College E-Magazine – Articles, Announcements &amp; Editorials</p>
+        </header>
+
+        <!-- 2. Featured Article Section -->
+        <section class="featured-article">
+            <h2 class="section-title">Featured Article</h2>
+            <h3 class="article-title">The Future of Tech in Education</h3>
+            <p class="author-name">By Dr. Anita Rao, Professor of Computer Science</p>
+            <div class="article-content">
+                <p>Education is evolving with artificial intelligence, virtual labs, and personalized learning platforms. Colleges that adopt these tools early are preparing students for careers that do not yet exist. This article explores how our institution is integrating smart classrooms and digital resources to enhance learning outcomes.</p>
+                <p>Student feedback has been overwhelmingly positive. Workshops on coding, data science, and cybersecurity have seen record enrollment. We believe that combining traditional pedagogy with modern technology creates the best environment for the next generation of engineers and innovators.</p>
+            </div>
+        </section>
+
+        <!-- Quote -->
+        <div class="quote-box">
+            &ldquo;Education is the most powerful weapon which you can use to change the world.&rdquo; &mdash; Nelson Mandela
+        </div>
+
+        <!-- 3. Text Decoration Demonstration -->
+        <section class="decoration-section">
+            <h2 class="section-title">Text Decoration Examples</h2>
+            <p class="decoration-underline">Underline with color and thickness</p>
+            <p class="decoration-overline">Overline with style and color</p>
+            <p class="decoration-line-through">Line-through (strikethrough)</p>
+            <p class="decoration-double">Double underline</p>
+            <p class="decoration-wavy">Wavy underline (shorthand)</p>
+            <p class="decoration-shorthand">Overline dashed – shorthand property</p>
+        </section>
+
+        <!-- 4. Text Transformation Section -->
+        <section class="transform-section">
+            <h2 class="section-title">Text Transform</h2>
+            <p class="uppercase">This paragraph is in uppercase.</p>
+            <p class="lowercase">THIS PARAGRAPH IS IN LOWERCASE.</p>
+            <p class="capitalize">this paragraph uses capitalize for each word.</p>
+        </section>
+
+        <!-- 5. Text Shadow Section -->
+        <section class="shadow-section">
+            <h2 class="section-title">Text Shadow</h2>
+            <p class="shadow-simple">Simple shadow effect</p>
+            <p class="shadow-blur">Blur glow effect</p>
+            <p class="shadow-multiple">Multiple shadows (neon style)</p>
+        </section>
+
+        <!-- 6. Font Properties Demonstration -->
+        <section class="font-demo-section">
+            <h2 class="section-title">Font Properties</h2>
+            <p class="font-style-normal">Font style: normal</p>
+            <p class="font-style-italic">Font style: italic</p>
+            <p class="font-style-oblique">Font style: oblique</p>
+            <p class="font-weight-normal">Font weight: normal</p>
+            <p class="font-weight-bold">Font weight: bold</p>
+            <p class="font-weight-900">Font weight: 900 (extra bold)</p>
+            <p class="font-variant-small-caps">Font variant: Small Caps</p>
+            <p class="font-shorthand">This line uses the font shorthand property.</p>
+        </section>
+
+        <!-- 7. Font Size Units + Explanation for PDF -->
+        <section class="font-size-section">
+            <h2 class="section-title">Font Size Units</h2>
+            <p class="size-px">This text uses font-size: 18px (absolute pixels).</p>
+            <p class="size-em">This text uses font-size: 1.2em (relative to parent).</p>
+            <p class="size-rem">This text uses font-size: 1.25rem (relative to root).</p>
+            <p class="size-vw">This text uses font-size: 3vw (viewport width).</p>
+            <div class="quote-box font-explanation">
+                <strong>Font-size units:</strong> <strong>px</strong> = fixed pixels; <strong>em</strong> = relative to parent (e.g. 1.2em = 1.2 × parent size); <strong>rem</strong> = relative to root html (e.g. 1.25rem ≈ 20px if root is 16px); <strong>vw</strong> = 1% of viewport width (responsive).
+            </div>
+        </section>
+
+        <!-- 9. Icons Section (Font Awesome) -->
+        <section class="icons-section">
+            <h2 class="section-title">Quick Links &amp; Icons</h2>
+            <ul class="icons-list">
+                <li><i class="fa-solid fa-home"></i> Home</li>
+                <li><i class="fa-solid fa-book"></i> Magazine</li>
+                <li><i class="fa-solid fa-envelope"></i> Contact</li>
+                <li><i class="fa-solid fa-user"></i> Profile</li>
+                <li><i class="fa-solid fa-bell"></i> Notifications</li>
+            </ul>
+        </section>
+
+        <footer class="magazine-footer">
+            &copy; 2026 Campus Voice E-Magazine. All rights reserved.
+        </footer>
+    </div>
+</body>
+</html>
