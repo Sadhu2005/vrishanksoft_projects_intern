@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City College Portal – Homepage</title>
+    <!-- Icon CDNs (no external CSS file, only these libraries) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <style>
+        /* Base layout */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f6f9;
+            color: #222;
+        }
+
+        .page-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem 2.5rem;
+        }
+
+        h1, h2, h3 {
+            margin-top: 0;
+        }
+
+        .section-title {
+            margin: 2rem 0 1rem;
+            font-size: 1.3rem;
+            border-bottom: 2px solid #c5cae9;
+            padding-bottom: 0.4rem;
+        }
+
+        /* 1. Header + Navigation */
+        .site-header {
+            background-color: #1a237e;
+            color: #fff;
+            padding: 1rem 1.5rem;
+            border-radius: 0 0 10px 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .site-header h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.6rem;
+        }
+
+        .main-nav {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .main-nav li {
+            /* li is block by default; here we convert it to horizontal menu using inline */
+            display: inline;
+            margin-right: 1.25rem;
+        }
+
+        .main-nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .main-nav a .fa-solid,
+        .main-nav a .material-icons,
+        .main-nav a .bi {
+            margin-right: 0.3rem;
+            color: #ffeb3b;
+            font-size: 1rem;
+        }
+
+        .main-nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* 2. Icons Demonstration Sections */
+        .icons-section {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+        }
+
+        .icon-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .icon-sample {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background-color: #f5f5f5;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+        }
+
+        .icon-sample i,
+        .icon-sample .material-icons {
+            font-size: 1.4rem;
+        }
+
+        .icon-fa-cloud { color: #1565c0; }
+        .icon-fa-user { color: #2e7d32; }
+        .icon-fa-bell { color: #ff9800; }
+        .icon-fa-envelope { color: #c62828; }
+        .icon-fa-book { color: #6a1b9a; }
+
+        .icon-bi { color: #1a237e; }
+        .icon-bi-alt { color: #00897b; font-size: 1.6rem; }
+
+        .icon-material-1 { color: #3949ab; }
+        .icon-material-2 { color: #f4511e; }
+        .icon-material-3 { color: #00897b; }
+        .icon-material-4 { color: #8e24aa; }
+        .icon-material-5 { color: #ffb300; }
+
+        .icon-sample:hover {
+            background-color: #e3f2fd;
+        }
+
+        /* 3. Display Property Demonstration */
+        .display-demo {
+            background-color: #ffffff;
+            padding: 1.25rem;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+        }
+
+        .demo-label {
+            font-weight: bold;
+            margin-top: 0.75rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .demo-block {
+            background-color: #c5e1a5;
+            display: block; /* takes full width, starts on new line */
+            padding: 0.5rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .demo-inline span {
+            background-color: #ffe082;
+            display: inline; /* sits in the line, width based on content */
+            padding: 0.25rem;
+        }
+
+        .demo-inline-block span {
+            background-color: #ffccbc;
+            display: inline-block; /* like inline but can have width/height/margin */
+            padding: 0.4rem 0.6rem;
+            margin-right: 0.4rem;
+        }
+
+        .demo-flex {
+            display: flex;
+            gap: 0.4rem;
+            margin-top: 0.25rem;
+        }
+
+        .demo-flex div {
+            background-color: #b3e5fc;
+            padding: 0.4rem 0.6rem;
+            flex: 1;
+            text-align: center;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.4rem;
+            margin-top: 0.25rem;
+        }
+
+        .demo-grid div {
+            background-color: #d1c4e9;
+            padding: 0.4rem 0.6rem;
+            text-align: center;
+        }
+
+        .demo-none {
+            display: none; /* this element will not take any space on the page */
+        }
+
+        /* 4. Inline to Block Conversion */
+        .convert-section {
+            background-color: #ffffff;
+            padding: 1.25rem;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+        }
+
+        .block-link {
+            /* By default, <a> is inline; here we convert it to block */
+            display: block;
+            background-color: #e3f2fd;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .block-span {
+            /* <span> is inline by default; turning into block gives it its own line */
+            display: block;
+            background-color: #fff3e0;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .inline-div-container {
+            margin-top: 0.5rem;
+        }
+
+        .inline-div {
+            /* <div> is block by default; here we make it inline so they flow in one line */
+            display: inline;
+            background-color: #c8e6c9;
+            padding: 0.3rem 0.6rem;
+            margin-right: 0.4rem;
+        }
+
+        /* 5. Flex Layout Section – Services */
+        .services-section {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+        }
+
+        .services-flex {
+            display: flex; /* Flex layout */
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .service-card {
+            flex: 1 1 220px;
+            background-color: #e3f2fd;
+            border-radius: 8px;
+            padding: 1rem;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+        }
+
+        .service-card i,
+        .service-card .material-icons {
+            font-size: 1.6rem;
+            color: #1a237e;
+        }
+
+        .service-card h3 {
+            margin: 0 0 0.3rem 0;
+            font-size: 1rem;
+        }
+
+        .service-card p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* 6. Grid Layout Section – Image Gallery */
+        .gallery-section {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+        }
+
+        .gallery-grid {
+            display: grid; /* Grid layout */
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.75rem;
+            margin-top: 0.75rem;
+        }
+
+        .gallery-item {
+            height: 100px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+        }
+
+        /* 7. Hide and Show Demonstration */
+        .hide-show-section {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+        }
+
+        .box-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .demo-box {
+            flex: 1 1 220px;
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: #e8f5e9;
+            border: 1px solid #a5d6a7;
+            text-align: center;
+        }
+
+        .demo-box.hidden-display {
+            display: none; /* Removed from layout, no space taken */
+        }
+
+        .demo-box.hidden-visibility {
+            visibility: hidden; /* Element is invisible but space is reserved */
+        }
+
+        .btn-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .btn {
+            padding: 0.4rem 0.9rem;
+            border-radius: 999px;
+            border: 1px solid #1a237e;
+            background-color: #1a237e;
+            color: white;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .btn.secondary {
+            background-color: #ffffff;
+            color: #1a237e;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        /* 8. Explanation note */
+        .explanation-note {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #555;
+            background-color: #e3f2fd;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+        }
+
+        @media (max-width: 600px) {
+            .site-header {
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <!-- 1. Header Section: College name + navigation -->
+        <header class="site-header">
+            <h1>City College Portal</h1>
+            <ul class="main-nav">
+                <li><a href="#home"><i class="fa-solid fa-house"></i>Home</a></li>
+                <li><a href="#about"><i class="fa-solid fa-circle-info"></i>About</a></li>
+                <li><a href="#services"><i class="fa-solid fa-graduation-cap"></i>Courses</a></li>
+                <li><a href="#contact"><i class="fa-solid fa-envelope"></i>Contact</a></li>
+                <li><a href="#login"><i class="fa-solid fa-right-to-bracket"></i>Login</a></li>
+            </ul>
+        </header>
+
+        <!-- 2. Icons Demonstration Section -->
+        <section id="icons" class="icons-section">
+            <h2 class="section-title">Icons Demonstration</h2>
+
+            <h3>Font Awesome Icons</h3>
+            <div class="icon-row">
+                <div class="icon-sample"><i class="fa-solid fa-cloud icon-fa-cloud"></i><span>Cloud</span></div>
+                <div class="icon-sample"><i class="fa-solid fa-user icon-fa-user"></i><span>User</span></div>
+                <div class="icon-sample"><i class="fa-solid fa-bell icon-fa-bell"></i><span>Bell</span></div>
+                <div class="icon-sample"><i class="fa-solid fa-envelope icon-fa-envelope"></i><span>Envelope</span></div>
+                <div class="icon-sample"><i class="fa-solid fa-book icon-fa-book"></i><span>Book</span></div>
+            </div>
+
+            <h3>Bootstrap Icons</h3>
+            <div class="icon-row">
+                <div class="icon-sample"><i class="bi bi-house-door icon-bi"></i><span>Home</span></div>
+                <div class="icon-sample"><i class="bi bi-people icon-bi-alt"></i><span>Students</span></div>
+                <div class="icon-sample"><i class="bi bi-calendar-event icon-bi"></i><span>Events</span></div>
+                <div class="icon-sample"><i class="bi bi-chat-dots icon-bi-alt"></i><span>Messages</span></div>
+                <div class="icon-sample"><i class="bi bi-gear icon-bi"></i><span>Settings</span></div>
+            </div>
+
+            <h3>Google Material Icons</h3>
+            <div class="icon-row">
+                <div class="icon-sample"><span class="material-icons icon-material-1">school</span><span>School</span></div>
+                <div class="icon-sample"><span class="material-icons icon-material-2">announcement</span><span>Announcements</span></div>
+                <div class="icon-sample"><span class="material-icons icon-material-3">event</span><span>Events</span></div>
+                <div class="icon-sample"><span class="material-icons icon-material-4">person</span><span>Profile</span></div>
+                <div class="icon-sample"><span class="material-icons icon-material-5">notifications</span><span>Alerts</span></div>
+            </div>
+        </section>
+
+        <!-- 3. Display Property Demonstration -->
+        <section class="display-demo">
+            <h2 class="section-title">Display Property Demonstration</h2>
+
+            <div class="demo-label">display: block</div>
+            <div class="demo-block">This is a block element (full width).</div>
+
+            <div class="demo-label">display: inline</div>
+            <div class="demo-inline">
+                <span>Inline 1</span>
+                <span>Inline 2</span>
+                <span>Inline 3</span>
+            </div>
+
+            <div class="demo-label">display: inline-block</div>
+            <div class="demo-inline-block">
+                <span>Inline-block 1</span>
+                <span>Inline-block 2</span>
+                <span>Inline-block 3</span>
+            </div>
+
+            <div class="demo-label">display: flex</div>
+            <div class="demo-flex">
+                <div>Flex 1</div>
+                <div>Flex 2</div>
+                <div>Flex 3</div>
+            </div>
+
+            <div class="demo-label">display: grid</div>
+            <div class="demo-grid">
+                <div>Grid 1</div>
+                <div>Grid 2</div>
+                <div>Grid 3</div>
+            </div>
+
+            <div class="demo-label">display: none</div>
+            <div class="demo-none">You should not see this text (display: none).</div>
+        </section>
+
+        <!-- 4. Inline to Block Conversion -->
+        <section class="convert-section">
+            <h2 class="section-title">Inline &amp; Block Conversion</h2>
+            <!--
+                Block vs Inline:
+                - Block elements (e.g. <div>, <p>, <h1>) start on a new line and take full width.
+                - Inline elements (e.g. <span>, <a>) sit inside a line and only take as much width as their content.
+                - Using display, we can convert inline to block and block to inline as needed for layout.
+            -->
+            <a href="#login" class="block-link">This &lt;a&gt; element is now block-level (display: block).</a>
+            <span class="block-span">This &lt;span&gt; element is converted to block.</span>
+
+            <div class="inline-div-container">
+                <div class="inline-div">Inline div A</div>
+                <div class="inline-div">Inline div B</div>
+                <div class="inline-div">Inline div C</div>
+            </div>
+        </section>
+
+        <!-- 5. Flex Layout Section (Services) -->
+        <section id="services" class="services-section">
+            <h2 class="section-title">Portal Services (Flex Layout)</h2>
+            <div class="services-flex">
+                <div class="service-card">
+                    <span class="material-icons">assignment</span>
+                    <div>
+                        <h3>Online Assignments</h3>
+                        <p>Submit and track assignments directly from the portal.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <div>
+                        <h3>Events Calendar</h3>
+                        <p>Stay updated with seminars, workshops, and cultural events.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <i class="bi bi-journal-check"></i>
+                    <div>
+                        <h3>Exam Results</h3>
+                        <p>View your semester results securely from anywhere.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Grid Layout Section (Image Gallery) -->
+        <section class="gallery-section">
+            <h2 class="section-title">Campus Gallery (Grid Layout)</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item"></div>
+                <div class="gallery-item"></div>
+                <div class="gallery-item"></div>
+                <div class="gallery-item"></div>
+                <div class="gallery-item"></div>
+                <div class="gallery-item"></div>
+            </div>
+        </section>
+
+        <!-- 7. Hide and Show Demonstration -->
+        <section class="hide-show-section">
+            <h2 class="section-title">Hide / Show Demonstration</h2>
+
+            <!--
+                display: none vs visibility: hidden
+                - display: none removes the element from layout completely (no space reserved).
+                - visibility: hidden makes the element invisible but keeps its space in the layout.
+            -->
+            <div class="box-row">
+                <div id="boxDisplay" class="demo-box">
+                    Box A (will be hidden with display: none)
+                </div>
+                <div id="boxVisibility" class="demo-box">
+                    Box B (will be hidden with visibility: hidden)
+                </div>
+            </div>
+            <div class="btn-row">
+                <button class="btn" onclick="hideBoxes()">Hide</button>
+                <button class="btn secondary" onclick="showBoxes()">Show</button>
+                <button class="btn" onclick="resetBoxes()">Reset</button>
+            </div>
+        </section>
+
+        <!-- 8. Explanation Section (for PDF) -->
+        <div class="explanation-note">
+            <strong>Display concepts:</strong>
+            <ul>
+                <li><strong>block</strong>: starts on a new line and takes full width (e.g. headings, div).</li>
+                <li><strong>inline</strong>: flows inside a line, width is based on content (e.g. span, a).</li>
+                <li><strong>inline-block</strong>: behaves like inline but can have width/height and margin.</li>
+                <li><strong>display: none</strong>: element is removed from layout (no space).</li>
+                <li><strong>visibility: hidden</strong>: element is invisible but still takes up space.</li>
+            </ul>
+            <!-- When to use inline-block:
+                 Use inline-block when you want elements to sit next to each other like inline,
+                 but also need to control their width, height, margin, and padding (e.g. button rows, cards). -->
+        </div>
+    </div>
+
+    <script>
+        function hideBoxes() {
+            document.getElementById('boxDisplay').classList.add('hidden-display');
+            document.getElementById('boxVisibility').classList.add('hidden-visibility');
+        }
+
+        function showBoxes() {
+            document.getElementById('boxDisplay').classList.remove('hidden-display');
+            document.getElementById('boxVisibility').classList.remove('hidden-visibility');
+        }
+
+        function resetBoxes() {
+            showBoxes();
+        }
+    </script>
+</body>
+</html>
+
