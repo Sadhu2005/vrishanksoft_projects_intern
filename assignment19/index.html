@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechFest 2026 – College Event Promotion</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        /* ========== 1. Sticky Navigation Bar (position: sticky + z-index) ========== */
+        /* Sticky stays in flow until scroll; then sticks to top. z-index keeps it above other content. */
+        .nav-bar {
+            position: sticky;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background-color: #1a237e;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-bar ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-bar a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .nav-bar a:hover {
+            text-decoration: underline;
+        }
+
+        /* ========== 2. Hero Section (position: relative + absolute + z-index) ========== */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 380px;
+            overflow: hidden;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Text overlay: absolute positioning with offsets; z-index above image */
+        .hero-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 10;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-overlay h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 2.5rem;
+        }
+
+        .hero-overlay p {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        /* ========== 3. About Section (float: left) ========== */
+        .about-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            background-color: #fff;
+            overflow: auto; /* clear float */
+        }
+
+        .about-section h2 {
+            margin-top: 0;
+            color: #1a237e;
+        }
+
+        /* Float image left so text wraps around it */
+        .about-image {
+            float: left;
+            width: 280px;
+            margin: 0 1.5rem 1rem 0;
+            border-radius: 8px;
+            border: 3px solid #c5cae9;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+        }
+
+        .about-text {
+            margin: 0;
+        }
+
+        .about-text p {
+            margin: 0 0 1rem 0;
+        }
+
+        /* ========== 4. Speakers Section (center alignment – flexbox) ========== */
+        .speakers-section {
+            background-color: #e8eaf6;
+            padding: 2rem 1.5rem;
+        }
+
+        .speakers-section h2 {
+            text-align: center;
+            color: #1a237e;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .speakers-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Center alignment using flex; cards aligned neatly. position: static (default). */
+        .speaker-card {
+            position: static;
+            width: 240px;
+            background: white;
+            border-radius: 10px;
+            padding: 1.25rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .speaker-card h3 {
+            margin: 0 0 0.25rem 0;
+            font-size: 1.1rem;
+        }
+
+        .speaker-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .speaker-avatar {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 0.75rem;
+            background: linear-gradient(135deg, #7986cb, #3949ab);
+            border-radius: 50%;
+        }
+
+        /* ========== 5. Registration Panel (overflow) ========== */
+        .registration-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .registration-section h2 {
+            color: #1a237e;
+            margin-top: 0;
+        }
+
+        /* Fixed-height box with overflow: auto for scrolling */
+        .registration-panel {
+            background: white;
+            border: 2px solid #c5cae9;
+            border-radius: 8px;
+            padding: 1rem;
+            height: 200px;
+            overflow: auto;
+            /* overflow-x: hidden; overflow-y: auto; would also work */
+        }
+
+        .registration-panel h4 {
+            margin: 0 0 0.5rem 0;
+        }
+
+        .registration-panel p {
+            margin: 0 0 0.75rem 0;
+            font-size: 0.95rem;
+        }
+
+        /* ========== 6. Transparent Announcement Box (RGBA) ========== */
+        .announcement-section {
+            position: relative;
+            min-height: 280px;
+            background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        /* Semi-transparent box: rgba for background; text stays visible */
+        .announcement-box {
+            background: rgba(26, 35, 126, 0.75);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .announcement-box h2 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.5rem;
+        }
+
+        .announcement-box p {
+            margin: 0;
+            opacity: 1;
+        }
+
+        /* ========== 7. Floating Contact Button (position: fixed) ========== */
+        .contact-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 50;
+        }
+
+        .contact-float a {
+            display: inline-block;
+            background-color: #1a237e;
+            color: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-float a:hover {
+            background-color: #3949ab;
+        }
+
+        /* Position types: static (speaker-card), relative (hero, announcement-section),
+           absolute (hero-overlay), fixed (contact-float), sticky (nav-bar).
+           Offsets: top, left (hero-overlay), bottom, right (contact-float). */
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #1a237e;
+            color: white;
+            margin-top: 2rem;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            .hero-overlay h1 {
+                font-size: 1.5rem;
+            }
+            .about-image {
+                float: none;
+                width: 100%;
+                margin: 0 0 1rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 1. Sticky Navigation Bar -->
+    <nav class="nav-bar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#speakers">Speakers</a></li>
+            <li><a href="#register">Register</a></li>
+            <li><a href="#announcements">Announcements</a></li>
+        </ul>
+    </nav>
+
+    <!-- 2. Hero Section: Text on image using position absolute + z-index -->
+    <section id="home" class="hero">
+        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200" alt="Tech event banner">
+        <div class="hero-overlay">
+            <h1>TechFest 2026</h1>
+            <p>National Level Technical Festival – March 15–17</p>
+        </div>
+    </section>
+
+    <!-- 3. About Section: Float image left, text wraps -->
+    <section id="about" class="about-section">
+        <h2>About the Event</h2>
+        <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=400" alt="Coding workshop">
+        </div>
+        <div class="about-text">
+            <p>TechFest is our college's flagship technical festival, bringing together students from across the country for hackathons, workshops, and competitions. This year we focus on AI, cybersecurity, and sustainable tech.</p>
+            <p>Participants get hands-on experience with industry tools, mentorship from experts, and a chance to showcase projects. Whether you are a beginner or an advanced coder, there is something for everyone.</p>
+            <p>Register early to secure your spot and get access to exclusive pre-event workshops and resource kits.</p>
+        </div>
+    </section>
+
+    <!-- 4. Speakers Section: Center alignment with flexbox -->
+    <section id="speakers" class="speakers-section">
+        <h2>Featured Speakers</h2>
+        <div class="speakers-container">
+            <div class="speaker-card">
+                <div class="speaker-avatar"></div>
+                <h3>Dr. Priya Sharma</h3>
+                <p>AI &amp; Machine Learning</p>
+            </div>
+            <div class="speaker-card">
+                <div class="speaker-avatar"></div>
+                <h3>Mr. Rajesh Kumar</h3>
+                <p>Cybersecurity Expert</p>
+            </div>
+            <div class="speaker-card">
+                <div class="speaker-avatar"></div>
+                <h3>Ms. Anitha Nair</h3>
+                <p>Full Stack Development</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Registration Panel: Overflow auto for scroll -->
+    <section id="register" class="registration-section">
+        <h2>Registration Guidelines</h2>
+        <div class="registration-panel">
+            <h4>Please read before registering:</h4>
+            <p>1. All participants must be currently enrolled in a recognized college or university. A valid ID card is required at the venue.</p>
+            <p>2. Team size for hackathon is 2–4 members. Solo participation is allowed for coding contests and workshops.</p>
+            <p>3. Registration is free. Slots are limited and will be allotted on a first-come, first-served basis. Once you submit the form, you will receive a confirmation email within 48 hours.</p>
+            <p>4. Participants must bring their own laptops for hackathon and workshop tracks. Power and Wi‑Fi will be provided at the venue.</p>
+            <p>5. By registering, you agree to abide by the code of conduct and the rules published on the event website. Any violation may lead to disqualification.</p>
+            <p>6. For any queries, write to techfest@college.edu or call the helpline 1800-XXX-XXXX between 9 AM and 6 PM.</p>
+        </div>
+    </section>
+
+    <!-- 6. Transparent Announcement Box (RGBA) -->
+    <section id="announcements" class="announcement-section">
+        <div class="announcement-box">
+            <h2>Important Announcement</h2>
+            <p>Last date for registration: March 1, 2026. Early birds get a free workshop pass. Stay tuned for the full schedule!</p>
+        </div>
+    </section>
+
+    <!-- 7. Floating Contact Button (position: fixed, bottom-right) -->
+    <div class="contact-float">
+        <a href="#contact">Contact Us</a>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 TechFest – College Event Promotion. All rights reserved.</p>
+    </footer>
+</body>
+</html>
