@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Admission Portal 2026</title>
+    <!-- Local Bootstrap 5 only - no CDN -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+    <!-- 1. Header Section (Full Width) -->
+    <header class="container-fluid bg-primary text-white text-center py-4 mt-3">
+        <h1 class="mb-2">City College of Engineering</h1>
+        <p class="lead mb-0">Admissions Open 2026</p>
+    </header>
+
+    <!-- 2. About Admission Section -->
+    <section class="container my-5">
+        <h2 class="text-center mb-4">About Admission</h2>
+        <div class="row align-items-center">
+            <div class="col-md-6 mb-3 mb-md-0">
+                <p class="mb-2">Our college offers undergraduate and postgraduate programs in Engineering, with state-of-the-art labs and industry partnerships. Admissions for the academic year 2026–27 are now open.</p>
+                <p class="mb-0">Eligible candidates can apply online. Last date for submission is June 30, 2026.</p>
+            </div>
+            <div class="col-md-6">
+                <div class="bg-light border rounded d-flex align-items-center justify-content-center" style="min-height: 220px;">
+                    <span class="text-muted">Image placeholder</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Courses Section (Responsive Cards) -->
+    <section class="container my-5">
+        <h2 class="text-center mb-4">Courses Offered</h2>
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">CSE</h5>
+                        <p class="card-text">Computer Science &amp; Engineering – B.E. 4 years.</p>
+                        <a href="#" class="btn btn-primary btn-sm">Apply</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">ECE</h5>
+                        <p class="card-text">Electronics &amp; Communication Engineering.</p>
+                        <a href="#" class="btn btn-primary btn-sm">Apply</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">MECH</h5>
+                        <p class="card-text">Mechanical Engineering – B.E. 4 years.</p>
+                        <a href="#" class="btn btn-primary btn-sm">Apply</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">CIVIL</h5>
+                        <p class="card-text">Civil Engineering – B.E. 4 years.</p>
+                        <a href="#" class="btn btn-primary btn-sm">Apply</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Admission Form Section -->
+    <section class="container my-5">
+        <h2 class="text-center mb-4">Admission Form</h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="shadow p-4 rounded bg-white">
+                    <form>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Full name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="email@example.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone</label>
+                            <input type="tel" class="form-control" id="phone" placeholder="10-digit mobile" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="course" class="form-label">Course Selection</label>
+                            <select class="form-control form-select" id="course" required>
+                                <option value="">Select course</option>
+                                <option value="cse">CSE</option>
+                                <option value="ece">ECE</option>
+                                <option value="mech">Mechanical</option>
+                                <option value="civil">Civil</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Grid Demonstration Section -->
+    <section class="container my-5">
+        <h2 class="text-center mb-4">Grid Demonstration</h2>
+        <p class="text-center text-muted small mb-3">One row with 3 equal columns; one row with 2 unequal columns (4 + 8).</p>
+        <div class="row mb-3">
+            <div class="col bg-info bg-opacity-50 p-3 text-center border">Column 1</div>
+            <div class="col bg-info bg-opacity-50 p-3 text-center border">Column 2</div>
+            <div class="col bg-info bg-opacity-50 p-3 text-center border">Column 3</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 bg-warning bg-opacity-50 p-3 text-center border">col-sm-4</div>
+            <div class="col-sm-8 bg-success bg-opacity-25 p-3 text-center border">col-sm-8</div>
+        </div>
+    </section>
+
+    <!-- 6. Footer Section -->
+    <footer class="container-fluid bg-dark text-white text-center py-3 mt-4">
+        <p class="mb-0">Copyright &copy; 2026 City College of Engineering. All rights reserved.</p>
+    </footer>
+
+    <!-- Local Bootstrap 5 JS (no CDN) -->
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
