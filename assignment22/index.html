@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Skill Development Portal – Assignment 22</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 1. Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Skill Portal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#courses">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#progress">Progress</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#resources">Resources</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <!-- Dropdown for course categories -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="courseDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Course Categories</a>
+                        <ul class="dropdown-menu" aria-labelledby="courseDropdown">
+                            <li><a class="dropdown-item" href="#">Web</a></li>
+                            <li><a class="dropdown-item" href="#">AI</a></li>
+                            <li><a class="dropdown-item" href="#">Data Science</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="home" class="bg-light py-4">
+        <div class="container text-center py-3">
+            <h1 class="display-6">Student Skill Development Portal</h1>
+            <p class="lead text-muted">Learn Programming, Web Development, AI &amp; more – track progress and access resources in one place.</p>
+        </div>
+    </section>
+
+    <!-- 2. Course Section (Cards) -->
+    <section id="courses" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Featured Courses</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400" class="card-img-top" alt="Web Development" style="height: 180px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">Web Development</h5>
+                            <p class="card-text">Full-stack web development with HTML, CSS, JavaScript, and modern frameworks.</p>
+                            <a href="#" class="btn btn-primary">Enroll</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=400" class="card-img-top" alt="Python" style="height: 180px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">Python Programming</h5>
+                            <p class="card-text">Learn Python from basics to advanced: data structures, APIs, and automation.</p>
+                            <a href="#" class="btn btn-primary">Enroll</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400" class="card-img-top" alt="AI" style="height: 180px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">Artificial Intelligence</h5>
+                            <p class="card-text">Introduction to ML, neural networks, and AI applications with hands-on projects.</p>
+                            <a href="#" class="btn btn-primary">Enroll</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Skill Progress Section (Progress Bars) -->
+    <section id="progress" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Skill Progress</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <p class="mb-2"><strong>HTML</strong></p>
+                    <div class="progress mb-3" style="height: 22px;">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+                    </div>
+                    <p class="mb-2"><strong>CSS</strong></p>
+                    <div class="progress mb-3" style="height: 22px;">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">70%</div>
+                    </div>
+                    <p class="mb-2"><strong>JavaScript</strong></p>
+                    <div class="progress mb-3" style="height: 22px;">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
+                    </div>
+                    <p class="mb-2"><strong>Python</strong></p>
+                    <div class="progress mb-3" style="height: 22px;">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Resource Navigation (Navs / Pills + content) -->
+    <section id="resources" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Learning Resources</h2>
+            <ul class="nav nav-pills justify-content-center mb-4" id="resourceTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="tutorials-tab" data-bs-toggle="pill" data-bs-target="#tutorials" type="button" role="tab" aria-controls="tutorials" aria-selected="true">Tutorials</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="practice-tab" data-bs-toggle="pill" data-bs-target="#practice" type="button" role="tab" aria-controls="practice" aria-selected="false">Practice Problems</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="projects-tab" data-bs-toggle="pill" data-bs-target="#projects" type="button" role="tab" aria-controls="projects" aria-selected="false">Projects</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="interview-tab" data-bs-toggle="pill" data-bs-target="#interview" type="button" role="tab" aria-controls="interview" aria-selected="false">Interview Questions</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="resourceTabContent">
+                <div class="tab-pane fade show active" id="tutorials" role="tabpanel" aria-labelledby="tutorials-tab">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Tutorials</h5>
+                            <p class="card-text mb-0">Step-by-step tutorials for Web Development, Python, and AI. Start from basics and move to advanced topics with code examples and exercises.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="practice" role="tabpanel" aria-labelledby="practice-tab">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Practice Problems</h5>
+                            <p class="card-text mb-0">Curated problems on data structures, algorithms, and coding challenges. Track your submissions and improve problem-solving skills.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="projects" role="tabpanel" aria-labelledby="projects-tab">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Projects</h5>
+                            <p class="card-text mb-0">Hands-on projects: build a portfolio site, a REST API, or a simple ML model. Complete projects to add to your resume.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="interview" role="tabpanel" aria-labelledby="interview-tab">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Interview Questions</h5>
+                            <p class="card-text mb-0">Common technical interview questions for programming, web dev, and data science roles. Prepare with topic-wise lists and tips.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Action Section (Button Groups) -->
+    <section class="py-5 bg-light">
+        <div class="container text-center">
+            <h2 class="mb-4">Quick Actions</h2>
+            <div class="d-flex flex-wrap justify-content-center gap-2">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-outline-primary">Download Notes</button>
+                    <button type="button" class="btn btn-outline-primary">Join Workshop</button>
+                    <button type="button" class="btn btn-outline-primary">Register for Internship</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Footer -->
+    <footer id="contact" class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p class="mb-1"><strong>Contact</strong></p>
+            <p class="mb-1">Email: <a href="mailto:skillportal@college.edu" class="text-white text-decoration-underline">skillportal@college.edu</a></p>
+            <p class="mb-0 small">Copyright &copy; 2026 Student Skill Development Portal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS CDN (required for dropdown, nav pills, navbar toggler) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
